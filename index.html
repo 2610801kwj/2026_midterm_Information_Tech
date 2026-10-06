@@ -1,0 +1,4498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>정보 시험범위 완전정복</title>
+
+<style>
+/* =========================================================
+   기본 설정
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family:
+        "Noto Sans KR",
+        "Apple SD Gothic Neo",
+        Arial,
+        sans-serif;
+    background: #f5f8fc;
+    color: #172033;
+    line-height: 1.75;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* =========================================================
+   헤더
+   ========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #dce4ef;
+}
+
+.header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    color: #1769d1;
+    white-space: nowrap;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.header-buttons button {
+    border: 1px solid #d5dfeb;
+    background: #fff;
+    color: #31415b;
+    border-radius: 8px;
+    padding: 7px 11px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.header-buttons button:hover {
+    background: #eef5ff;
+    border-color: #9dbfe8;
+}
+
+/* =========================================================
+   전체 레이아웃
+   ========================================================= */
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 30px 20px 80px;
+}
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        #eaf4ff,
+        #ffffff
+    );
+    border: 1px solid #cfe1f5;
+    border-radius: 18px;
+    padding: 35px;
+    margin-bottom: 28px;
+}
+
+.hero h1 {
+    margin: 0 0 8px;
+    font-size: 34px;
+    color: #135bb8;
+}
+
+.hero p {
+    margin: 8px 0;
+}
+
+.hero strong {
+    color: #135bb8;
+}
+
+/* =========================================================
+   목차
+   ========================================================= */
+
+.toc {
+    background: #fff;
+    border: 1px solid #dce4ef;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 30px;
+}
+
+.toc h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(210px, 1fr));
+    gap: 8px;
+}
+
+.toc a {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 8px;
+    background: #f5f8fc;
+    color: #24598e;
+    font-weight: 700;
+}
+
+.toc a:hover {
+    background: #e7f1ff;
+}
+
+/* =========================================================
+   섹션
+   ========================================================= */
+
+section {
+    scroll-margin-top: 80px;
+    margin-bottom: 45px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.section-number {
+    min-width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #1769d1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 28px;
+    margin: 0;
+    color: #143d70;
+}
+
+h3 {
+    color: #1d4f83;
+    margin-top: 28px;
+}
+
+h4 {
+    color: #315c88;
+    margin-top: 22px;
+}
+
+/* =========================================================
+   카드
+   ========================================================= */
+
+.card {
+    background: #fff;
+    border: 1px solid #dce4ef;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 14px 0;
+}
+
+.card-blue {
+    background: #f1f7ff;
+    border-color: #c9def5;
+}
+
+.card-yellow {
+    background: #fffaf0;
+    border-color: #ead9ae;
+}
+
+.card-red {
+    background: #fff4f4;
+    border-color: #edcccc;
+}
+
+.card-green {
+    background: #f2faf5;
+    border-color: #c8e3d0;
+}
+
+/* =========================================================
+   핵심 포인트
+   ========================================================= */
+
+.key {
+    border-left: 5px solid #1769d1;
+    background: #eef6ff;
+    padding: 14px 17px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.warning {
+    border-left: 5px solid #d78b00;
+    background: #fff8e8;
+    padding: 14px 17px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.danger {
+    border-left: 5px solid #d34747;
+    background: #fff2f2;
+    padding: 14px 17px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.memory {
+    border-left: 5px solid #31a35a;
+    background: #effaf3;
+    padding: 14px 17px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+/* =========================================================
+   표
+   ========================================================= */
+
+.table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 580px;
+}
+
+th,
+td {
+    border: 1px solid #d8e0ea;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+th {
+    background: #edf4fc;
+    color: #234a75;
+    font-weight: 800;
+}
+
+tr:nth-child(even) td {
+    background: #fbfcfe;
+}
+
+/* =========================================================
+   코드
+   ========================================================= */
+
+pre {
+    background: #172033;
+    color: #edf5ff;
+    border-radius: 10px;
+    padding: 17px;
+    overflow-x: auto;
+    line-height: 1.55;
+    font-family:
+        "D2Coding",
+        "Consolas",
+        monospace;
+}
+
+code {
+    background: #edf2f7;
+    color: #c13c3c;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family:
+        "D2Coding",
+        "Consolas",
+        monospace;
+}
+
+pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+/* =========================================================
+   배지
+   ========================================================= */
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    background: #e7f1ff;
+    color: #1769d1;
+}
+
+.badge-red {
+    background: #ffe9e9;
+    color: #b93838;
+}
+
+.badge-yellow {
+    background: #fff1cc;
+    color: #8c6100;
+}
+
+.badge-green {
+    background: #e5f7eb;
+    color: #257342;
+}
+
+/* =========================================================
+   퀴즈
+   ========================================================= */
+
+.quiz {
+    border: 1px solid #d7e1ed;
+    border-radius: 12px;
+    background: white;
+    padding: 18px;
+    margin: 15px 0;
+}
+
+.quiz-question {
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.answer {
+    display: none;
+    margin-top: 10px;
+    padding: 12px;
+    background: #eef7ff;
+    border-radius: 8px;
+    color: #174c80;
+}
+
+.answer.show {
+    display: block;
+}
+
+.quiz button {
+    border: 0;
+    background: #1769d1;
+    color: white;
+    border-radius: 7px;
+    padding: 7px 12px;
+    cursor: pointer;
+}
+
+/* =========================================================
+   체크리스트
+   ========================================================= */
+
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    margin: 7px 0;
+}
+
+.checklist input {
+    width: 17px;
+    height: 17px;
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+/* =========================================================
+   비교 박스
+   ========================================================= */
+
+.compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.compare > div {
+    background: #fff;
+    border: 1px solid #dce4ef;
+    border-radius: 10px;
+    padding: 17px;
+}
+
+.compare h4 {
+    margin-top: 0;
+}
+
+/* =========================================================
+   정렬 애니메이션
+   ========================================================= */
+
+.sort-visual {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    height: 150px;
+    padding: 15px;
+    background: #f4f7fa;
+    border-radius: 10px;
+}
+
+.bar {
+    width: 35px;
+    background: #4d88c7;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px 5px 0 0;
+}
+
+/* =========================================================
+   서브넷 계산
+   ========================================================= */
+
+.binary {
+    font-family: monospace;
+    letter-spacing: 1px;
+    word-break: break-all;
+}
+
+.bit-network {
+    color: #1769d1;
+    font-weight: 900;
+}
+
+.bit-host {
+    color: #d15b17;
+    font-weight: 900;
+}
+
+/* =========================================================
+   암기판
+   ========================================================= */
+
+.memory-board {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.memory-item {
+    padding: 15px;
+    background: white;
+    border: 1px solid #dbe4ee;
+    border-radius: 10px;
+}
+
+.memory-item strong {
+    display: block;
+    color: #1769d1;
+    margin-bottom: 5px;
+}
+
+/* =========================================================
+   TOP 버튼
+   ========================================================= */
+
+#topButton {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 50%;
+    background: #1769d1;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* =========================================================
+   모바일
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .header-inner {
+        padding: 10px 13px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .header-buttons button {
+        padding: 5px 7px;
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 18px 12px 60px;
+    }
+
+    .hero {
+        padding: 22px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    .compare {
+        grid-template-columns: 1fr;
+    }
+
+    pre {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   인쇄
+   ========================================================= */
+
+@media print {
+
+    header,
+    #topButton,
+    .header-buttons {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .container {
+        max-width: none;
+    }
+
+    .card,
+    .quiz,
+    .toc {
+        break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            정보 시험 완전정복
+        </div>
+
+        <div class="header-buttons">
+            <button onclick="window.print()">
+                인쇄
+            </button>
+
+            <button onclick="showAllAnswers()">
+                답 모두 보기
+            </button>
+
+            <button onclick="hideAllAnswers()">
+                답 숨기기
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+<!-- =======================================================
+     HERO
+     ======================================================= -->
+
+<div class="hero">
+
+    <h1>
+        정보 시험범위 완전정복
+    </h1>
+
+    <p>
+        <strong>
+            머신러닝 · Python · 네트워크 · 서브넷 · 정렬 · 탐색 · 압축 · 암호화
+        </strong>
+    </p>
+
+    <p>
+        시험 직전에 읽을 수 있도록
+        개념 → 예제 → 비교 → 함정 → 암기 → 문제 순서로 정리한
+        종합 학습 페이지
+    </p>
+
+    <div class="key">
+        <strong>공부 순서 추천</strong><br>
+        ① Python 연산자 →
+        ② 정렬·탐색 →
+        ③ 네트워크·서브넷 →
+        ④ 압축·암호화 →
+        ⑤ 머신러닝·AI →
+        ⑥ 마지막 암기판
+    </div>
+
+</div>
+
+<!-- =======================================================
+     목차
+     ======================================================= -->
+
+<div class="toc">
+
+    <h2>
+        목차
+    </h2>
+
+    <div class="toc-grid">
+
+        <a href="#ai">
+            1. 인공지능과 머신러닝
+        </a>
+
+        <a href="#python-basic">
+            2. Python 기본
+        </a>
+
+        <a href="#operators">
+            3. Python 연산자
+        </a>
+
+        <a href="#strings">
+            4. 문자열
+        </a>
+
+        <a href="#network">
+            5. 네트워크
+        </a>
+
+        <a href="#subnet">
+            6. IP와 서브넷
+        </a>
+
+        <a href="#binary">
+            7. 2진수
+        </a>
+
+        <a href="#sorting">
+            8. 정렬
+        </a>
+
+        <a href="#search">
+            9. 탐색
+        </a>
+
+        <a href="#compression">
+            10. 데이터 압축
+        </a>
+
+        <a href="#encryption">
+            11. 암호화
+        </a>
+
+        <a href="#comparison">
+            12. 비교 총정리
+        </a>
+
+        <a href="#quiz">
+            13. 종합 문제
+        </a>
+
+        <a href="#final">
+            14. 최종 암기판
+        </a>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     1. AI
+     ======================================================= -->
+
+<section id="ai">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            1
+        </div>
+
+        <h2>
+            인공지능과 머신러닝
+        </h2>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+            1-1. 규칙은 누가 만드는가?
+        </h3>
+
+        <p>
+            컴퓨터가 문제를 해결하는 방법은 크게
+            전통적인 프로그래밍과 머신러닝으로 나눠 생각할 수 있다.
+        </p>
+
+        <div class="compare">
+
+            <div>
+
+                <h4>
+                    전통적인 프로그래밍
+                </h4>
+
+                <p>
+                    사람이 규칙을 직접 만든다.
+                </p>
+
+                <pre><code>규칙 + 데이터
+      ↓
+    컴퓨터
+      ↓
+     결과</code></pre>
+
+            </div>
+
+            <div>
+
+                <h4>
+                    머신러닝
+                </h4>
+
+                <p>
+                    데이터와 정답을 이용하여
+                    컴퓨터가 규칙을 찾아낸다.
+                </p>
+
+                <pre><code>데이터 + 정답
+      ↓
+    컴퓨터
+      ↓
+   규칙 발견</code></pre>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="key">
+
+        <strong>
+            ★ 시험 핵심
+        </strong>
+
+        <br>
+
+        전통적 프로그래밍:
+        <strong>사람이 규칙을 만든다.</strong>
+
+        <br>
+
+        머신러닝:
+        <strong>컴퓨터가 데이터에서 규칙을 찾는다.</strong>
+
+    </div>
+
+    <h3>
+        1-2. 전통적인 프로그래밍과 머신러닝 비교
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>구분</th>
+                    <th>전통적인 프로그래밍</th>
+                    <th>머신러닝</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>규칙</td>
+                    <td>사람이 작성</td>
+                    <td>컴퓨터가 학습</td>
+                </tr>
+
+                <tr>
+                    <td>입력</td>
+                    <td>규칙 + 데이터</td>
+                    <td>데이터 + 정답</td>
+                </tr>
+
+                <tr>
+                    <td>핵심</td>
+                    <td>명시적인 규칙</td>
+                    <td>데이터에서 패턴 발견</td>
+                </tr>
+
+                <tr>
+                    <td>새로운 데이터</td>
+                    <td>작성된 규칙에 따라 처리</td>
+                    <td>학습한 규칙으로 예측</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>
+        1-3. 머신러닝의 기본 과정
+    </h3>
+
+    <pre><code>많은 데이터 준비
+       ↓
+정답이 있는 데이터 제공
+       ↓
+컴퓨터가 패턴 학습
+       ↓
+규칙 또는 모델 생성
+       ↓
+새로운 데이터 입력
+       ↓
+결과 예측</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            암기
+        </strong>
+
+        <br>
+
+        데이터 + 정답
+        →
+        학습
+        →
+        규칙 발견
+        →
+        새로운 데이터 예측
+
+    </div>
+
+    <h3>
+        1-4. 하나의 특징만으로 판단하면 생기는 문제
+    </h3>
+
+    <p>
+        예를 들어
+        <strong>
+            "귀가 뾰족하면 고양이다"
+        </strong>
+        라는 규칙을 생각해 보자.
+    </p>
+
+    <div class="card-yellow">
+
+        <p>
+            <strong>스코티시 폴드</strong>는 고양이지만
+            귀가 접혀 있다.
+        </p>
+
+        <p>
+            <strong>저먼 셰퍼드</strong>는 개지만
+            귀가 뾰족할 수 있다.
+        </p>
+
+    </div>
+
+    <div class="warning">
+
+        따라서 하나의 특징만 가지고
+        모든 대상을 정확하게 분류하기는 어렵다.
+
+    </div>
+
+    <h3>
+        1-5. 퍼셉트론
+    </h3>
+
+    <p>
+        퍼셉트론(Perceptron)은
+        인공 신경망을 구성하는 기본적인 단위이다.
+    </p>
+
+    <pre><code>입력
+ ↓
+퍼셉트론
+ ↓
+출력</code></pre>
+
+    <p>
+        퍼셉트론을 여러 개 연결하면
+        인공 신경망을 만들 수 있다.
+    </p>
+
+    <h3>
+        1-6. 인공 신경망의 구조
+    </h3>
+
+    <pre><code>입력층
+  ↓
+은닉층
+  ↓
+출력층</code></pre>
+
+    <p>
+        은닉층은 하나만 존재할 수도 있고
+        여러 개가 존재할 수도 있다.
+    </p>
+
+    <div class="card-blue">
+
+        <p>
+            <strong>입력층</strong>
+            → 데이터를 입력받는 층
+        </p>
+
+        <p>
+            <strong>은닉층</strong>
+            → 입력 데이터를 처리하고 특징을 학습하는 층
+        </p>
+
+        <p>
+            <strong>출력층</strong>
+            → 최종 결과를 출력하는 층
+        </p>
+
+    </div>
+
+    <h3>
+        1-7. 신경망 그림 해석
+    </h3>
+
+    <p>
+        신경망 그림에서
+        <strong>점 하나는 퍼셉트론</strong>을 의미하고,
+        <strong>선은 퍼셉트론 사이의 연결</strong>을 의미한다.
+    </p>
+
+    <pre><code>● ─── ● ─── ●
+│ ╲   │   ╱ │
+● ─── ● ─── ●
+│ ╱   │   ╲ │
+● ─── ● ─── ●</code></pre>
+
+    <p>
+        실제 인공지능 모델에서는
+        매우 많은 퍼셉트론과 연결이 사용될 수 있다.
+    </p>
+
+    <h3>
+        1-8. 깊은 신경망
+    </h3>
+
+    <p>
+        은닉층을 여러 개 사용하여
+        깊게 구성한 신경망을
+        <strong>깊은 신경망</strong>이라고 한다.
+    </p>
+
+    <p>
+        영어로
+        <strong>Deep Neural Network</strong>라고 한다.
+    </p>
+
+    <h3>
+        1-9. 딥러닝
+    </h3>
+
+    <p>
+        깊은 신경망을 이용하여 학습하는 방법을
+        <strong>딥러닝(Deep Learning)</strong>이라고 한다.
+    </p>
+
+    <div class="warning">
+
+        <strong>헷갈림 주의</strong>
+
+        <br>
+
+        깊은 신경망 = 구조
+
+        <br>
+
+        딥러닝 = 학습 방법
+
+    </div>
+
+    <h3>
+        1-10. CNN
+    </h3>
+
+    <p>
+        CNN은
+        <strong>Convolutional Neural Network</strong>의 약자이다.
+    </p>
+
+    <p>
+        이미지처럼 공간적인 구조를 가진 데이터를
+        처리하는 데 효과적인 신경망이다.
+    </p>
+
+    <div class="card">
+
+        <h4>
+            왜 필요한가?
+        </h4>
+
+        <p>
+            컴퓨터가 이미지를 단순히
+            픽셀 하나하나의 값으로만 비교하면 문제가 생긴다.
+        </p>
+
+        <p>
+            같은 사과라도
+            위치가 조금 달라지면
+            많은 픽셀의 값이 달라질 수 있다.
+        </p>
+
+    </div>
+
+    <div class="card-blue">
+
+        <p>
+            CNN은 이미지의
+            <strong>
+                지역적인 특징
+            </strong>
+            을 효과적으로 학습한다.
+        </p>
+
+        <p>
+            예:
+            선, 모서리, 무늬, 부분적인 형태 등
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     2. PYTHON BASIC
+     ======================================================= -->
+
+<section id="python-basic">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            2
+        </div>
+
+        <h2>
+            Python 기본
+        </h2>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+            2-1. 변수
+        </h3>
+
+        <p>
+            변수는 데이터를 저장하기 위한 이름이다.
+        </p>
+
+        <pre><code>A = 15
+B = 3</code></pre>
+
+        <p>
+            위 코드에서
+            <code>A</code>에는 15,
+            <code>B</code>에는 3이 저장된다.
+        </p>
+
+    </div>
+
+    <div class="warning">
+
+        <strong>
+            =는 "같다"가 아니다.
+        </strong>
+
+        <br>
+
+        Python에서
+        <code>=</code>는
+        값을 변수에 <strong>대입</strong>하는 연산자이다.
+
+    </div>
+
+    <h3>
+        2-2. print()
+    </h3>
+
+    <p>
+        <code>print()</code>는 값을 화면에 출력한다.
+    </p>
+
+    <pre><code>print(10)</code></pre>
+
+    <p>
+        결과:
+    </p>
+
+    <pre><code>10</code></pre>
+
+    <pre><code>A = 15
+print(A)</code></pre>
+
+    <p>
+        결과:
+    </p>
+
+    <pre><code>15</code></pre>
+
+</section>
+
+<!-- =======================================================
+     3. OPERATORS
+     ======================================================= -->
+
+<section id="operators">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            3
+        </div>
+
+        <h2>
+            Python 연산자
+        </h2>
+
+    </div>
+
+    <h3>
+        3-1. 산술 연산자
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>연산자</th>
+                    <th>의미</th>
+                    <th>예</th>
+                    <th>결과</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td><code>+</code></td>
+                    <td>더하기</td>
+                    <td><code>15 + 3</code></td>
+                    <td>18</td>
+                </tr>
+
+                <tr>
+                    <td><code>-</code></td>
+                    <td>빼기</td>
+                    <td><code>15 - 3</code></td>
+                    <td>12</td>
+                </tr>
+
+                <tr>
+                    <td><code>*</code></td>
+                    <td>곱하기</td>
+                    <td><code>15 * 3</code></td>
+                    <td>45</td>
+                </tr>
+
+                <tr>
+                    <td><code>/</code></td>
+                    <td>나누기</td>
+                    <td><code>15 / 3</code></td>
+                    <td>5.0</td>
+                </tr>
+
+                <tr>
+                    <td><code>//</code></td>
+                    <td>몫</td>
+                    <td><code>15 // 3</code></td>
+                    <td>5</td>
+                </tr>
+
+                <tr>
+                    <td><code>%</code></td>
+                    <td>나머지</td>
+                    <td><code>15 % 3</code></td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td><code>**</code></td>
+                    <td>거듭제곱</td>
+                    <td><code>15 ** 3</code></td>
+                    <td>3375</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>
+        3-2. 가장 많이 틀리는 / // %
+    </h3>
+
+    <pre><code>7 / 2
+7 // 2
+7 % 2</code></pre>
+
+    <p>
+        결과:
+    </p>
+
+    <pre><code>3.5
+3
+1</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            암기법
+        </strong>
+
+        <br>
+
+        <code>/</code>
+        → 그냥 나눠
+
+        <br>
+
+        <code>//</code>
+        → 몫만
+
+        <br>
+
+        <code>%</code>
+        → 나머지
+
+    </div>
+
+    <h3>
+        3-3. 거듭제곱
+    </h3>
+
+    <pre><code>2 ** 3</code></pre>
+
+    <p>
+        결과:
+        <strong>8</strong>
+    </p>
+
+    <p>
+        즉
+        <code>a ** b</code>
+        는
+        <strong>a의 b제곱</strong>이다.
+    </p>
+
+    <h3>
+        3-4. 비교 연산자
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>연산자</th>
+                    <th>뜻</th>
+                    <th>예</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td><code>==</code></td>
+                    <td>같다</td>
+                    <td><code>5 == 5</code></td>
+                </tr>
+
+                <tr>
+                    <td><code>!=</code></td>
+                    <td>같지 않다</td>
+                    <td><code>5 != 3</code></td>
+                </tr>
+
+                <tr>
+                    <td><code>></code></td>
+                    <td>크다</td>
+                    <td><code>5 > 3</code></td>
+                </tr>
+
+                <tr>
+                    <td><code><</code></td>
+                    <td>작다</td>
+                    <td><code>3 < 5</code></td>
+                </tr>
+
+                <tr>
+                    <td><code>>=</code></td>
+                    <td>크거나 같다</td>
+                    <td><code>5 >= 5</code></td>
+                </tr>
+
+                <tr>
+                    <td><code><=</code></td>
+                    <td>작거나 같다</td>
+                    <td><code>5 <= 5</code></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="danger">
+
+        <strong>
+            ★ 시험 함정
+        </strong>
+
+        <br>
+
+        <code>=</code>
+        → 대입
+
+        <br>
+
+        <code>==</code>
+        → 같은지 비교
+
+    </div>
+
+    <h3>
+        3-5. 비교 연산자의 결과
+    </h3>
+
+    <pre><code>5 > 3</code></pre>
+
+    <p>
+        → <code>True</code>
+    </p>
+
+    <pre><code>5 < 3</code></pre>
+
+    <p>
+        → <code>False</code>
+    </p>
+
+    <pre><code>5 == 5</code></pre>
+
+    <p>
+        → <code>True</code>
+    </p>
+
+    <pre><code>5 != 5</code></pre>
+
+    <p>
+        → <code>False</code>
+    </p>
+
+    <h3>
+        3-6. 논리 연산자
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>연산자</th>
+                    <th>의미</th>
+                    <th>핵심</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td><code>and</code></td>
+                    <td>그리고</td>
+                    <td>둘 다 참이어야 참</td>
+                </tr>
+
+                <tr>
+                    <td><code>or</code></td>
+                    <td>또는</td>
+                    <td>하나라도 참이면 참</td>
+                </tr>
+
+                <tr>
+                    <td><code>not</code></td>
+                    <td>부정</td>
+                    <td>참/거짓 반전</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>
+        3-7. AND
+    </h3>
+
+    <pre><code>True and True
+→ True
+
+True and False
+→ False
+
+False and True
+→ False
+
+False and False
+→ False</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            AND = 둘 다
+        </strong>
+
+    </div>
+
+    <h3>
+        3-8. OR
+    </h3>
+
+    <pre><code>True or True
+→ True
+
+True or False
+→ True
+
+False or True
+→ True
+
+False or False
+→ False</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            OR = 하나라도
+        </strong>
+
+    </div>
+
+    <h3>
+        3-9. NOT
+    </h3>
+
+    <pre><code>not True
+→ False
+
+not False
+→ True</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            NOT = 반대로
+        </strong>
+
+    </div>
+
+    <h3>
+        3-10. 논리 연산 진리표
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>A and B</th>
+                    <th>A or B</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>True</td>
+                    <td>True</td>
+                    <td>True</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>True</td>
+                    <td>False</td>
+                    <td>False</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>False</td>
+                    <td>True</td>
+                    <td>False</td>
+                    <td>True</td>
+                </tr>
+
+                <tr>
+                    <td>False</td>
+                    <td>False</td>
+                    <td>False</td>
+                    <td>False</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     4. STRINGS
+     ======================================================= -->
+
+<section id="strings">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            4
+        </div>
+
+        <h2>
+            문자열
+        </h2>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+            4-1. 문자열이란?
+        </h3>
+
+        <p>
+            문자 여러 개가 이어져 있는 데이터를
+            문자열이라고 한다.
+        </p>
+
+        <pre><code>"Hello"
+"Python"
+"정보 시험"</code></pre>
+
+    </div>
+
+    <h3>
+        4-2. 문자열 + 문자열
+    </h3>
+
+    <pre><code>"Hello" + "World"</code></pre>
+
+    <p>
+        결과:
+    </p>
+
+    <pre><code>HelloWorld</code></pre>
+
+    <p>
+        <code>+</code>는 문자열을 이어 붙인다.
+    </p>
+
+    <h3>
+        4-3. 문자열 * 정수
+    </h3>
+
+    <pre><code>"Hi" * 3</code></pre>
+
+    <p>
+        결과:
+    </p>
+
+    <pre><code>HiHiHi</code></pre>
+
+    <div class="key">
+
+        문자열에서
+
+        <br>
+
+        <code>+</code>
+        → 연결
+
+        <br>
+
+        <code>*</code>
+        → 반복
+
+    </div>
+
+    <h3>
+        4-4. print에서 쉼표와 +의 차이
+    </h3>
+
+    <pre><code>print("A", "B")</code></pre>
+
+    <p>
+        결과:
+    </p>
+
+    <pre><code>A B</code></pre>
+
+    <pre><code>print("A" + "B")</code></pre>
+
+    <p>
+        결과:
+    </p>
+
+    <pre><code>AB</code></pre>
+
+    <div class="warning">
+
+        쉼표는 출력할 때
+        값 사이에 기본적으로 공백이 생긴다.
+
+        <br>
+
+        문자열 <code>+</code>는
+        문자열을 바로 이어 붙인다.
+
+    </div>
+
+    <h3>
+        4-5. 문자열과 숫자
+    </h3>
+
+    <p>
+        문자열과 숫자를 무조건
+        <code>+</code>로 연결할 수 있는 것은 아니다.
+    </p>
+
+    <p>
+        시험에서는
+        문자열인지 숫자인지를 먼저 확인해야 한다.
+    </p>
+
+</section>
+
+<!-- =======================================================
+     5. NETWORK
+     ======================================================= -->
+
+<section id="network">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            5
+        </div>
+
+        <h2>
+            네트워크
+        </h2>
+
+    </div>
+
+    <div class="card">
+
+        <h3>
+            5-1. 네트워크란?
+        </h3>
+
+        <p>
+            여러 컴퓨터나 장치를 연결하여
+            데이터를 주고받을 수 있도록 만든 시스템이다.
+        </p>
+
+    </div>
+
+    <h3>
+        5-2. LAN
+    </h3>
+
+    <p>
+        <strong>LAN</strong>은
+        Local Area Network의 약자이다.
+    </p>
+
+    <p>
+        비교적 좁은 범위의 네트워크를 의미한다.
+    </p>
+
+    <p>
+        예:
+        학교, 집, 사무실 등
+    </p>
+
+    <h3>
+        5-3. 네트워크 장치
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>장치</th>
+                    <th>역할</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>스위치</td>
+                    <td>네트워크 내부의 장치들을 연결</td>
+                </tr>
+
+                <tr>
+                    <td>라우터</td>
+                    <td>서로 다른 네트워크 사이에서 데이터를 전달</td>
+                </tr>
+
+                <tr>
+                    <td>공유기</td>
+                    <td>일반적으로 여러 장치를 네트워크에 연결하고 인터넷 접속을 공유</td>
+                </tr>
+
+                <tr>
+                    <td>모뎀</td>
+                    <td>통신망과 사용자 측 네트워크를 연결</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="warning">
+
+        <strong>
+            라우터
+        </strong>
+        → 네트워크와 네트워크 사이의 경로를 연결
+
+        <br>
+
+        <strong>
+            스위치
+        </strong>
+        → 같은 네트워크 안의 장치를 연결
+
+    </div>
+
+    <h3>
+        5-4. IP 주소
+    </h3>
+
+    <p>
+        네트워크에서 장치를 식별하기 위해
+        IP 주소를 사용할 수 있다.
+    </p>
+
+    <p>
+        IPv4 주소는
+        <strong>32비트</strong>로 구성된다.
+    </p>
+
+    <p>
+        일반적으로
+        8비트씩 네 부분으로 나누어
+        십진수로 표현한다.
+    </p>
+
+    <pre><code>192.168.0.10</code></pre>
+
+    <p>
+        각각의 숫자는
+        0부터 255까지 표현할 수 있다.
+    </p>
+
+    <h3>
+        5-5. IPv4
+    </h3>
+
+    <p>
+        IPv4는 32비트 주소 체계이다.
+    </p>
+
+    <pre><code>8비트 + 8비트 + 8비트 + 8비트
+      = 총 32비트</code></pre>
+
+    <h3>
+        5-6. 도메인
+    </h3>
+
+    <p>
+        사람이 IP 주소를 직접 외우는 대신
+        기억하기 쉬운 이름을 사용할 수 있다.
+    </p>
+
+    <p>
+        이러한 인터넷 주소 이름을
+        <strong>도메인 이름</strong>이라고 한다.
+    </p>
+
+    <h3>
+        5-7. DNS
+    </h3>
+
+    <p>
+        DNS는
+        <strong>Domain Name System</strong>이다.
+    </p>
+
+    <p>
+        도메인 이름을 IP 주소와 연결하여
+        인터넷 통신에 활용할 수 있도록 한다.
+    </p>
+
+    <div class="key">
+
+        <strong>
+            DNS 암기
+        </strong>
+
+        <br>
+
+        사람이 이해하기 쉬운
+        <strong>도메인 이름</strong>
+
+        ↔
+
+        컴퓨터 네트워크에서 사용하는
+        <strong>IP 주소</strong>
+
+    </div>
+
+    <h3>
+        5-8. DHCP
+    </h3>
+
+    <p>
+        DHCP는 네트워크에 연결된 장치가
+        IP 주소 등의 네트워크 설정을
+        자동으로 받을 수 있도록 해준다.
+    </p>
+
+    <h3>
+        5-9. 게이트웨이
+    </h3>
+
+    <p>
+        다른 네트워크로 나가기 위한
+        출입구 역할을 하는 장치를
+        게이트웨이라고 생각할 수 있다.
+    </p>
+
+    <div class="memory">
+
+        <strong>
+            게이트웨이 = 다른 네트워크로 나가는 문
+        </strong>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     6. SUBNET
+     ======================================================= -->
+
+<section id="subnet">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            6
+        </div>
+
+        <h2>
+            IP와 서브넷
+        </h2>
+
+    </div>
+
+    <h3>
+        6-1. 서브넷이란?
+    </h3>
+
+    <p>
+        하나의 네트워크를
+        더 작은 네트워크 단위로 나누는 것을
+        서브네팅이라고 한다.
+    </p>
+
+    <p>
+        나누어진 각각의 작은 네트워크를
+        서브넷이라고 한다.
+    </p>
+
+    <h3>
+        6-2. 서브넷 마스크
+    </h3>
+
+    <p>
+        IP 주소에서
+        네트워크 부분과 호스트 부분을
+        구분하기 위해 사용하는 것이
+        <strong>서브넷 마스크</strong>이다.
+    </p>
+
+    <pre><code>IP 주소
+192.168.1.10
+
+서브넷 마스크
+255.255.255.0</code></pre>
+
+    <h3>
+        6-3. 네트워크 부분과 호스트 부분
+    </h3>
+
+    <p>
+        서브넷 마스크의 비트가
+        1인 부분은 네트워크 부분,
+        0인 부분은 호스트 부분으로 생각한다.
+    </p>
+
+    <pre><code>IP
+11000000.10101000.00000001.00001010
+
+Mask
+11111111.11111111.11111111.00000000</code></pre>
+
+    <p>
+        위에서는 앞의 24비트가
+        네트워크 부분이고
+        뒤의 8비트가
+        호스트 부분이다.
+    </p>
+
+    <h3>
+        6-4. CIDR 표기
+    </h3>
+
+    <p>
+        서브넷 마스크를
+        <strong>/숫자</strong> 형태로
+        간단하게 표현할 수 있다.
+    </p>
+
+    <pre><code>255.255.255.0
+
+↓
+
+/24</code></pre>
+
+    <p>
+        <code>/24</code>는
+        앞에서부터 24비트가
+        네트워크 부분이라는 의미이다.
+    </p>
+
+    <h3>
+        6-5. 자주 나오는 CIDR
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>CIDR</th>
+                    <th>네트워크 비트</th>
+                    <th>호스트 비트</th>
+                    <th>대표적인 마스크</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>/8</td>
+                    <td>8</td>
+                    <td>24</td>
+                    <td>255.0.0.0</td>
+                </tr>
+
+                <tr>
+                    <td>/16</td>
+                    <td>16</td>
+                    <td>16</td>
+                    <td>255.255.0.0</td>
+                </tr>
+
+                <tr>
+                    <td>/24</td>
+                    <td>24</td>
+                    <td>8</td>
+                    <td>255.255.255.0</td>
+                </tr>
+
+                <tr>
+                    <td>/25</td>
+                    <td>25</td>
+                    <td>7</td>
+                    <td>255.255.255.128</td>
+                </tr>
+
+                <tr>
+                    <td>/26</td>
+                    <td>26</td>
+                    <td>6</td>
+                    <td>255.255.255.192</td>
+                </tr>
+
+                <tr>
+                    <td>/27</td>
+                    <td>27</td>
+                    <td>5</td>
+                    <td>255.255.255.224</td>
+                </tr>
+
+                <tr>
+                    <td>/28</td>
+                    <td>28</td>
+                    <td>4</td>
+                    <td>255.255.255.240</td>
+                </tr>
+
+                <tr>
+                    <td>/29</td>
+                    <td>29</td>
+                    <td>3</td>
+                    <td>255.255.255.248</td>
+                </tr>
+
+                <tr>
+                    <td>/30</td>
+                    <td>30</td>
+                    <td>2</td>
+                    <td>255.255.255.252</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>
+        6-6. 호스트 비트 계산
+    </h3>
+
+    <p>
+        IPv4는 총 32비트이다.
+    </p>
+
+    <p>
+        따라서
+    </p>
+
+    <pre><code>호스트 비트 = 32 - 네트워크 비트</code></pre>
+
+    <p>
+        예:
+    </p>
+
+    <pre><code>/24
+
+32 - 24
+= 8
+
+호스트 비트 = 8</code></pre>
+
+    <h3>
+        6-7. 호스트 수
+    </h3>
+
+    <p>
+        호스트 비트가 H개라면
+        이론적으로 만들 수 있는 주소 수는
+    </p>
+
+    <pre><code>2^H</code></pre>
+
+    <p>
+        일반적인 IPv4 서브넷에서는
+        네트워크 주소와 브로드캐스트 주소를
+        호스트에게 할당하지 않으므로
+    </p>
+
+    <pre><code>사용 가능한 호스트 수
+= 2^H - 2</code></pre>
+
+    <h3>
+        6-8. /24 예제
+    </h3>
+
+    <pre><code>/24
+
+호스트 비트
+= 32 - 24
+= 8
+
+전체 주소
+= 2^8
+= 256
+
+일반적인 사용 가능 호스트
+= 256 - 2
+= 254</code></pre>
+
+    <div class="key">
+
+        <strong>
+            /24 → 8비트 호스트 → 256개 주소 → 일반적으로 254개 사용 가능
+        </strong>
+
+    </div>
+
+    <h3>
+        6-9. 네트워크 주소
+    </h3>
+
+    <p>
+        호스트 부분을 모두 0으로 만든 주소를
+        네트워크 주소라고 한다.
+    </p>
+
+    <p>
+        예를 들어
+        <code>192.168.1.25/24</code>라면
+    </p>
+
+    <pre><code>192.168.1.0</code></pre>
+
+    <p>
+        이 네트워크의 네트워크 주소가 된다.
+    </p>
+
+    <h3>
+        6-10. 브로드캐스트 주소
+    </h3>
+
+    <p>
+        호스트 부분을 모두 1로 만든 주소를
+        브로드캐스트 주소라고 한다.
+    </p>
+
+    <p>
+        <code>192.168.1.25/24</code>의 경우
+    </p>
+
+    <pre><code>192.168.1.255</code></pre>
+
+    <p>
+        가 브로드캐스트 주소가 된다.
+    </p>
+
+    <h3>
+        6-11. /24에서 기억할 것
+    </h3>
+
+    <div class="memory-board">
+
+        <div class="memory-item">
+            <strong>/24</strong>
+            네트워크 24비트
+        </div>
+
+        <div class="memory-item">
+            <strong>호스트</strong>
+            8비트
+        </div>
+
+        <div class="memory-item">
+            <strong>네트워크 주소</strong>
+            마지막 부분 0
+        </div>
+
+        <div class="memory-item">
+            <strong>브로드캐스트</strong>
+            마지막 부분 255
+        </div>
+
+        <div class="memory-item">
+            <strong>전체 주소</strong>
+            256개
+        </div>
+
+        <div class="memory-item">
+            <strong>사용 가능</strong>
+            일반적으로 254개
+        </div>
+
+    </div>
+
+    <h3>
+        6-12. 같은 네트워크인지 판단하기
+    </h3>
+
+    <p>
+        두 IP가 같은 서브넷에 속하는지 확인하려면
+        네트워크 부분이 같은지 확인한다.
+    </p>
+
+    <p>
+        예:
+    </p>
+
+    <pre><code>192.168.1.10/24
+192.168.1.200/24</code></pre>
+
+    <p>
+        둘 다 네트워크 부분이
+        <code>192.168.1</code>로 같다.
+    </p>
+
+    <p>
+        따라서 같은 네트워크에 속한다.
+    </p>
+
+    <pre><code>192.168.1.10/24
+192.168.2.10/24</code></pre>
+
+    <p>
+        네트워크 부분이 다르므로
+        같은 /24 네트워크가 아니다.
+    </p>
+
+</section>
+
+<!-- =======================================================
+     7. BINARY
+     ======================================================= -->
+
+<section id="binary">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            7
+        </div>
+
+        <h2>
+            2진수와 IP 계산
+        </h2>
+
+    </div>
+
+    <h3>
+        7-1. 2진수의 자리값
+    </h3>
+
+    <pre><code>128 64 32 16 8 4 2 1</code></pre>
+
+    <p>
+        각각은
+        2의 거듭제곱이다.
+    </p>
+
+    <pre><code>2^7 2^6 2^5 2^4 2^3 2^2 2^1 2^0
+
+128  64  32  16   8   4   2   1</code></pre>
+
+    <h3>
+        7-2. 10진수 → 2진수
+    </h3>
+
+    <p>
+        예를 들어 13을 생각하자.
+    </p>
+
+    <pre><code>8 + 4 + 1
+= 13</code></pre>
+
+    <p>
+        따라서
+    </p>
+
+    <pre><code>00001101</code></pre>
+
+    <p>
+        이 된다.
+    </p>
+
+    <h3>
+        7-3. 2진수 → 10진수
+    </h3>
+
+    <pre><code>00001101
+
+0×128
++ 0×64
++ 0×32
++ 0×16
++ 1×8
++ 1×4
++ 0×2
++ 1×1
+
+= 13</code></pre>
+
+    <h3>
+        7-4. 255
+    </h3>
+
+    <pre><code>11111111</code></pre>
+
+    <p>
+        모든 비트가 1이면
+    </p>
+
+    <pre><code>128+64+32+16+8+4+2+1
+= 255</code></pre>
+
+    <div class="memory">
+
+        IPv4 한 옥텟의 최댓값은
+        <strong>255</strong>이다.
+
+    </div>
+
+    <h3>
+        7-5. 서브넷 마스크와 2진수
+    </h3>
+
+    <pre><code>255.255.255.0
+
+11111111.11111111.11111111.00000000</code></pre>
+
+    <p>
+        1이 24개이므로
+        <strong>/24</strong>이다.
+    </p>
+
+</section>
+
+<!-- =======================================================
+     8. SORTING
+     ======================================================= -->
+
+<section id="sorting">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            8
+        </div>
+
+        <h2>
+            정렬 알고리즘
+        </h2>
+
+    </div>
+
+    <div class="card">
+
+        <p>
+            정렬은 데이터를 일정한 기준에 따라
+            순서대로 배치하는 것이다.
+        </p>
+
+        <p>
+            대표적으로 시험 범위에는
+        </p>
+
+        <ul>
+            <li>버블 정렬</li>
+            <li>선택 정렬</li>
+            <li>병합 정렬</li>
+        </ul>
+
+        <p>
+            이 포함된다.
+        </p>
+
+    </div>
+
+    <h3>
+        8-1. 버블 정렬
+    </h3>
+
+    <p>
+        인접한 두 데이터를 비교하여
+        순서가 잘못되어 있으면 교환한다.
+    </p>
+
+    <p>
+        한 번의 반복이 끝날 때마다
+        큰 값이 뒤쪽으로 이동하는 모습을
+        생각하면 쉽다.
+    </p>
+
+    <pre><code>5 2 4 1
+
+5와 2 비교
+→ 교환
+
+2 5 4 1
+
+5와 4 비교
+→ 교환
+
+2 4 5 1
+
+5와 1 비교
+→ 교환
+
+2 4 1 5</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            버블 정렬
+        </strong>
+
+        <br>
+
+        핵심:
+        <strong>인접한 값끼리 비교하고 교환</strong>
+
+    </div>
+
+    <h3>
+        8-2. 버블 정렬 특징
+    </h3>
+
+    <ul>
+        <li>서로 이웃한 데이터를 비교한다.</li>
+        <li>필요하면 두 값을 교환한다.</li>
+        <li>큰 값이 뒤쪽으로 이동한다.</li>
+        <li>여러 번 반복하여 전체를 정렬한다.</li>
+    </ul>
+
+    <h3>
+        8-3. 선택 정렬
+    </h3>
+
+    <p>
+        선택 정렬은
+        아직 정렬되지 않은 부분에서
+        가장 작은 값을 선택하여
+        앞쪽으로 가져오는 방식이다.
+    </p>
+
+    <pre><code>5 2 4 1
+
+가장 작은 값 = 1
+
+1 2 4 5
+
+다음 구간에서
+가장 작은 값 = 2
+
+1 2 4 5</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            선택 정렬
+        </strong>
+
+        <br>
+
+        "가장 작은 것을 골라서 앞으로"
+
+    </div>
+
+    <h3>
+        8-4. 선택 정렬 특징
+    </h3>
+
+    <ul>
+        <li>정렬되지 않은 부분을 찾는다.</li>
+        <li>그중 최솟값을 찾는다.</li>
+        <li>앞쪽의 현재 위치와 교환한다.</li>
+        <li>이를 반복한다.</li>
+    </ul>
+
+    <h3>
+        8-5. 버블 vs 선택
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>구분</th>
+                    <th>버블 정렬</th>
+                    <th>선택 정렬</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>핵심</td>
+                    <td>인접한 값 비교</td>
+                    <td>최솟값 선택</td>
+                </tr>
+
+                <tr>
+                    <td>주요 행동</td>
+                    <td>비교 후 교환</td>
+                    <td>최솟값을 찾아 교환</td>
+                </tr>
+
+                <tr>
+                    <td>암기</td>
+                    <td>옆끼리 비교</td>
+                    <td>작은 것 선택</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>
+        8-6. 병합 정렬
+    </h3>
+
+    <p>
+        병합 정렬은 데이터를
+        작은 부분으로 나눈 다음
+        정렬하면서 다시 합치는 방식이다.
+    </p>
+
+    <pre><code>5 2 4 1
+
+      ↓
+
+5 2     4 1
+
+ ↓       ↓
+
+5  2    4  1
+
+      ↓
+
+2 5     1 4
+
+      ↓
+
+1 2 4 5</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            병합 정렬
+        </strong>
+
+        <br>
+
+        나눈다
+        →
+        각각 정렬한다
+        →
+        합친다
+
+    </div>
+
+    <h3>
+        8-7. 병합 정렬의 핵심
+    </h3>
+
+    <p>
+        병합 정렬에서 가장 중요한 단어는
+        <strong>분할</strong>과
+        <strong>병합</strong>이다.
+    </p>
+
+    <pre><code>전체
+ ↓
+작게 분할
+ ↓
+정렬
+ ↓
+정렬된 부분들을 병합
+ ↓
+완성</code></pre>
+
+    <h3>
+        8-8. 세 정렬 한 번에 비교
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>알고리즘</th>
+                    <th>핵심 행동</th>
+                    <th>암기 키워드</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>버블</td>
+                    <td>인접한 값 비교·교환</td>
+                    <td>옆끼리</td>
+                </tr>
+
+                <tr>
+                    <td>선택</td>
+                    <td>최솟값 선택</td>
+                    <td>작은 것 선택</td>
+                </tr>
+
+                <tr>
+                    <td>병합</td>
+                    <td>분할 후 병합</td>
+                    <td>나누고 합치기</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     9. SEARCH
+     ======================================================= -->
+
+<section id="search">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            9
+        </div>
+
+        <h2>
+            탐색 알고리즘
+        </h2>
+
+    </div>
+
+    <h3>
+        9-1. 순차 탐색
+    </h3>
+
+    <p>
+        순차 탐색은 데이터를
+        처음부터 하나씩 차례대로 확인하면서
+        원하는 값을 찾는 방법이다.
+    </p>
+
+    <pre><code>데이터:
+
+4 7 2 9 5
+
+찾는 값: 9
+
+4 → 아님
+7 → 아님
+2 → 아님
+9 → 찾음</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            순차 탐색 = 처음부터 하나씩
+        </strong>
+
+    </div>
+
+    <h3>
+        9-2. 순차 탐색의 특징
+    </h3>
+
+    <ul>
+        <li>데이터를 처음부터 확인한다.</li>
+        <li>각 데이터를 순서대로 비교한다.</li>
+        <li>데이터가 정렬되어 있지 않아도 사용할 수 있다.</li>
+    </ul>
+
+    <h3>
+        9-3. 이진 탐색
+    </h3>
+
+    <p>
+        이진 탐색은
+        <strong>정렬된 데이터</strong>에서
+        매우 효율적으로 값을 찾는 방법이다.
+    </p>
+
+    <p>
+        가운데 값을 확인한 뒤
+        찾는 값이 어느 쪽에 있는지 판단하여
+        탐색 범위를 절반으로 줄인다.
+    </p>
+
+    <pre><code>1 2 3 4 5 6 7 8 9
+
+찾는 값 = 8
+
+가운데 = 5
+
+8은 5보다 큼
+→ 오른쪽만 탐색
+
+6 7 8 9
+
+가운데 = 7
+
+8은 7보다 큼
+→ 오른쪽
+
+8 9
+
+가운데 = 8
+
+→ 찾음</code></pre>
+
+    <div class="danger">
+
+        <strong>
+            ★ 이진 탐색의 필수 조건
+        </strong>
+
+        <br>
+
+        데이터가
+        <strong>정렬되어 있어야 한다.</strong>
+
+    </div>
+
+    <h3>
+        9-4. 순차 vs 이진
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>구분</th>
+                    <th>순차 탐색</th>
+                    <th>이진 탐색</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>방법</td>
+                    <td>처음부터 하나씩</td>
+                    <td>가운데부터 범위를 절반씩 줄임</td>
+                </tr>
+
+                <tr>
+                    <td>정렬 필요</td>
+                    <td>필요 없음</td>
+                    <td>필요함</td>
+                </tr>
+
+                <tr>
+                    <td>핵심</td>
+                    <td>순서대로 확인</td>
+                    <td>중간값 기준으로 범위 축소</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>
+        9-5. 이진 탐색에서 가장 중요한 것
+    </h3>
+
+    <pre><code>정렬
+ ↓
+가운데 확인
+ ↓
+왼쪽 또는 오른쪽 선택
+ ↓
+범위 절반
+ ↓
+반복</code></pre>
+
+    <div class="memory">
+
+        <strong>
+            이진 탐색 = 정렬 + 가운데 + 절반
+        </strong>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     10. COMPRESSION
+     ======================================================= -->
+
+<section id="compression">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            10
+        </div>
+
+        <h2>
+            데이터 압축
+        </h2>
+
+    </div>
+
+    <h3>
+        10-1. 데이터 압축이란?
+    </h3>
+
+    <p>
+        데이터를 표현하는 데 필요한
+        저장 공간이나 전송량을 줄이는 기술이다.
+    </p>
+
+    <div class="key">
+
+        압축의 핵심 목적:
+
+        <br>
+
+        <strong>
+            데이터 크기를 줄인다.
+        </strong>
+
+    </div>
+
+    <h3>
+        10-2. 왜 압축하는가?
+    </h3>
+
+    <ul>
+        <li>저장 공간을 절약할 수 있다.</li>
+        <li>데이터 전송량을 줄일 수 있다.</li>
+        <li>전송 시간을 줄이는 데 도움이 된다.</li>
+    </ul>
+
+    <h3>
+        10-3. 무손실 압축
+    </h3>
+
+    <p>
+        압축한 뒤 다시 복원했을 때
+        원본 데이터를 완전히 복구할 수 있는 방식이다.
+    </p>
+
+    <pre><code>원본
+ ↓
+압축
+ ↓
+복원
+ ↓
+원본과 동일</code></pre>
+
+    <p>
+        문서나 프로그램처럼
+        정보가 하나라도 달라지면 안 되는 데이터에
+        적합하다.
+    </p>
+
+    <h3>
+        10-4. 손실 압축
+    </h3>
+
+    <p>
+        일부 정보를 제거하여
+        데이터 크기를 크게 줄이는 방식이다.
+    </p>
+
+    <pre><code>원본
+ ↓
+일부 정보 제거
+ ↓
+압축
+ ↓
+복원
+ ↓
+원본과 완전히 같지는 않을 수 있음</code></pre>
+
+    <p>
+        사람에게 큰 차이가 느껴지지 않는
+        정보 등을 줄이는 데 활용할 수 있다.
+    </p>
+
+    <h3>
+        10-5. 무손실 vs 손실
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>구분</th>
+                    <th>무손실 압축</th>
+                    <th>손실 압축</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>원본 복원</td>
+                    <td>가능</td>
+                    <td>완전 복원 불가능할 수 있음</td>
+                </tr>
+
+                <tr>
+                    <td>정보 손실</td>
+                    <td>없음</td>
+                    <td>있음</td>
+                </tr>
+
+                <tr>
+                    <td>특징</td>
+                    <td>원본 보존</td>
+                    <td>크기를 크게 줄일 수 있음</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="warning">
+
+        <strong>
+            압축 ≠ 암호화
+        </strong>
+
+        <br>
+
+        압축은
+        <strong>데이터 크기를 줄이는 것</strong>이고,
+
+        <br>
+
+        암호화는
+        <strong>데이터를 보호하는 것</strong>이다.
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     11. ENCRYPTION
+     ======================================================= -->
+
+<section id="encryption">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            11
+        </div>
+
+        <h2>
+            데이터 암호화
+        </h2>
+
+    </div>
+
+    <h3>
+        11-1. 암호화란?
+    </h3>
+
+    <p>
+        데이터를 허가되지 않은 사람이
+        쉽게 이해할 수 없도록 변환하는 기술이다.
+    </p>
+
+    <pre><code>평문
+ ↓
+암호화
+ ↓
+암호문
+ ↓
+복호화
+ ↓
+평문</code></pre>
+
+    <h3>
+        11-2. 평문
+    </h3>
+
+    <p>
+        암호화하기 전의
+        원래 데이터를 평문이라고 한다.
+    </p>
+
+    <h3>
+        11-3. 암호문
+    </h3>
+
+    <p>
+        암호화된 데이터를
+        암호문이라고 한다.
+    </p>
+
+    <h3>
+        11-4. 복호화
+    </h3>
+
+    <p>
+        암호문을 다시 원래 데이터로
+        되돌리는 과정을 복호화라고 한다.
+    </p>
+
+    <div class="memory">
+
+        <strong>
+            평문 → 암호화 → 암호문
+        </strong>
+
+        <br>
+
+        <strong>
+            암호문 → 복호화 → 평문
+        </strong>
+
+    </div>
+
+    <h3>
+        11-5. 암호화의 목적
+    </h3>
+
+    <ul>
+        <li>데이터의 기밀성을 보호한다.</li>
+        <li>허가받지 않은 사람이 내용을 알아보기 어렵게 한다.</li>
+        <li>통신 과정에서 정보를 보호하는 데 활용한다.</li>
+    </ul>
+
+    <h3>
+        11-6. 암호화와 압축 비교
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>구분</th>
+                    <th>압축</th>
+                    <th>암호화</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>목적</td>
+                    <td>크기 감소</td>
+                    <td>정보 보호</td>
+                </tr>
+
+                <tr>
+                    <td>핵심</td>
+                    <td>효율적인 저장·전송</td>
+                    <td>기밀성</td>
+                </tr>
+
+                <tr>
+                    <td>결과</td>
+                    <td>작아진 데이터</td>
+                    <td>알아보기 어려운 데이터</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     12. COMPARISON
+     ======================================================= -->
+
+<section id="comparison">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            12
+        </div>
+
+        <h2>
+            시험 직전 비교 총정리
+        </h2>
+
+    </div>
+
+    <h3>
+        12-1. Python 연산자
+    </h3>
+
+    <div class="memory-board">
+
+        <div class="memory-item">
+            <strong>+</strong>
+            덧셈 / 문자열 연결
+        </div>
+
+        <div class="memory-item">
+            <strong>-</strong>
+            뺄셈
+        </div>
+
+        <div class="memory-item">
+            <strong>*</strong>
+            곱셈 / 문자열 반복
+        </div>
+
+        <div class="memory-item">
+            <strong>/</strong>
+            나눗셈
+        </div>
+
+        <div class="memory-item">
+            <strong>//</strong>
+            몫
+        </div>
+
+        <div class="memory-item">
+            <strong>%</strong>
+            나머지
+        </div>
+
+        <div class="memory-item">
+            <strong>**</strong>
+            거듭제곱
+        </div>
+
+        <div class="memory-item">
+            <strong>==</strong>
+            같다
+        </div>
+
+        <div class="memory-item">
+            <strong>!=</strong>
+            같지 않다
+        </div>
+
+        <div class="memory-item">
+            <strong>and</strong>
+            둘 다 참
+        </div>
+
+        <div class="memory-item">
+            <strong>or</strong>
+            하나라도 참
+        </div>
+
+        <div class="memory-item">
+            <strong>not</strong>
+            반대
+        </div>
+
+    </div>
+
+    <h3>
+        12-2. 정렬 알고리즘
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>알고리즘</th>
+                    <th>한 문장 암기</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>버블</td>
+                    <td>옆에 있는 두 개씩 비교하고 교환</td>
+                </tr>
+
+                <tr>
+                    <td>선택</td>
+                    <td>가장 작은 값을 골라 앞으로</td>
+                </tr>
+
+                <tr>
+                    <td>병합</td>
+                    <td>작게 나누고 정렬하면서 합치기</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>
+        12-3. 탐색 알고리즘
+    </h3>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>알고리즘</th>
+                    <th>핵심</th>
+                    <th>정렬 필요?</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>순차 탐색</td>
+                    <td>처음부터 하나씩</td>
+                    <td>아니오</td>
+                </tr>
+
+                <tr>
+                    <td>이진 탐색</td>
+                    <td>가운데 → 절반 제거</td>
+                    <td>예</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <h3>
+        12-4. AI 핵심
+    </h3>
+
+    <div class="memory-board">
+
+        <div class="memory-item">
+            <strong>머신러닝</strong>
+            데이터에서 규칙 학습
+        </div>
+
+        <div class="memory-item">
+            <strong>퍼셉트론</strong>
+            신경망의 기본 단위
+        </div>
+
+        <div class="memory-item">
+            <strong>신경망</strong>
+            퍼셉트론 연결
+        </div>
+
+        <div class="memory-item">
+            <strong>입력층</strong>
+            데이터 입력
+        </div>
+
+        <div class="memory-item">
+            <strong>은닉층</strong>
+            데이터 처리
+        </div>
+
+        <div class="memory-item">
+            <strong>출력층</strong>
+            결과 출력
+        </div>
+
+        <div class="memory-item">
+            <strong>딥러닝</strong>
+            깊은 신경망을 이용한 학습
+        </div>
+
+        <div class="memory-item">
+            <strong>CNN</strong>
+            이미지 특징 학습
+        </div>
+
+    </div>
+
+    <h3>
+        12-5. 네트워크 핵심
+    </h3>
+
+    <div class="memory-board">
+
+        <div class="memory-item">
+            <strong>IP</strong>
+            네트워크 주소
+        </div>
+
+        <div class="memory-item">
+            <strong>IPv4</strong>
+            32비트
+        </div>
+
+        <div class="memory-item">
+            <strong>DNS</strong>
+            도메인 ↔ IP
+        </div>
+
+        <div class="memory-item">
+            <strong>DHCP</strong>
+            IP 설정 자동 할당
+        </div>
+
+        <div class="memory-item">
+            <strong>게이트웨이</strong>
+            다른 네트워크로 가는 출입구
+        </div>
+
+        <div class="memory-item">
+            <strong>서브넷 마스크</strong>
+            네트워크/호스트 구분
+        </div>
+
+        <div class="memory-item">
+            <strong>네트워크 주소</strong>
+            호스트 비트 모두 0
+        </div>
+
+        <div class="memory-item">
+            <strong>브로드캐스트</strong>
+            호스트 비트 모두 1
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     13. QUIZ
+     ======================================================= -->
+
+<section id="quiz">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            13
+        </div>
+
+        <h2>
+            종합 자가진단 문제
+        </h2>
+
+    </div>
+
+    <p>
+        먼저 답을 생각한 다음
+        버튼을 눌러 정답을 확인한다.
+    </p>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            1. 전통적인 프로그래밍에서는 규칙을 누가 만드는가?
+        </div>
+
+        <button onclick="toggleAnswer(1)">
+            정답 보기
+        </button>
+
+        <div id="answer1" class="answer">
+            사람(프로그래머)이 직접 만든다.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            2. 머신러닝은 무엇을 통해 규칙을 찾아내는가?
+        </div>
+
+        <button onclick="toggleAnswer(2)">
+            정답 보기
+        </button>
+
+        <div id="answer2" class="answer">
+            데이터와 정답을 이용하여 학습하면서 규칙을 찾아낸다.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            3. 퍼셉트론 여러 개를 연결하면 무엇을 만들 수 있는가?
+        </div>
+
+        <button onclick="toggleAnswer(3)">
+            정답 보기
+        </button>
+
+        <div id="answer3" class="answer">
+            인공 신경망을 만들 수 있다.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            4. 신경망의 기본적인 층 3가지는?
+        </div>
+
+        <button onclick="toggleAnswer(4)">
+            정답 보기
+        </button>
+
+        <div id="answer4" class="answer">
+            입력층, 은닉층, 출력층.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            5. 깊은 신경망을 이용한 학습 방법은?
+        </div>
+
+        <button onclick="toggleAnswer(5)">
+            정답 보기
+        </button>
+
+        <div id="answer5" class="answer">
+            딥러닝.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            6. 이미지 처리에 특히 적합한 신경망은?
+        </div>
+
+        <button onclick="toggleAnswer(6)">
+            정답 보기
+        </button>
+
+        <div id="answer6" class="answer">
+            CNN.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            7. 15 / 3의 결과는?
+        </div>
+
+        <button onclick="toggleAnswer(7)">
+            정답 보기
+        </button>
+
+        <div id="answer7" class="answer">
+            5.0
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            8. 15 // 3의 결과는?
+        </div>
+
+        <button onclick="toggleAnswer(8)">
+            정답 보기
+        </button>
+
+        <div id="answer8" class="answer">
+            5
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            9. 17 % 5의 결과는?
+        </div>
+
+        <button onclick="toggleAnswer(9)">
+            정답 보기
+        </button>
+
+        <div id="answer9" class="answer">
+            2
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            10. 2 ** 4의 결과는?
+        </div>
+
+        <button onclick="toggleAnswer(10)">
+            정답 보기
+        </button>
+
+        <div id="answer10" class="answer">
+            16
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            11. Python에서 =와 ==의 차이는?
+        </div>
+
+        <button onclick="toggleAnswer(11)">
+            정답 보기
+        </button>
+
+        <div id="answer11" class="answer">
+            =는 대입, ==는 같은지 비교이다.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            12. and는 언제 True인가?
+        </div>
+
+        <button onclick="toggleAnswer(12)">
+            정답 보기
+        </button>
+
+        <div id="answer12" class="answer">
+            두 조건이 모두 True일 때 True이다.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            13. or는 언제 True인가?
+        </div>
+
+        <button onclick="toggleAnswer(13)">
+            정답 보기
+        </button>
+
+        <div id="answer13" class="answer">
+            하나 이상의 조건이 True이면 True이다.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            14. 문자열 "Hi" * 3의 결과는?
+        </div>
+
+        <button onclick="toggleAnswer(14)">
+            정답 보기
+        </button>
+
+        <div id="answer14" class="answer">
+            HiHiHi
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            15. print("A", "B")와 print("A"+"B")의 차이는?
+        </div>
+
+        <button onclick="toggleAnswer(15)">
+            정답 보기
+        </button>
+
+        <div id="answer15" class="answer">
+            첫 번째는 기본적으로 A B처럼 공백이 들어가고,
+            두 번째는 AB처럼 붙어서 출력된다.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            16. IPv4는 몇 비트인가?
+        </div>
+
+        <button onclick="toggleAnswer(16)">
+            정답 보기
+        </button>
+
+        <div id="answer16" class="answer">
+            32비트.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            17. /24의 호스트 비트는 몇 개인가?
+        </div>
+
+        <button onclick="toggleAnswer(17)">
+            정답 보기
+        </button>
+
+        <div id="answer17" class="answer">
+            32 - 24 = 8비트.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            18. /24에서 전체 주소 수는?
+        </div>
+
+        <button onclick="toggleAnswer(18)">
+            정답 보기
+        </button>
+
+        <div id="answer18" class="answer">
+            2^8 = 256개.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            19. /24에서 일반적으로 사용할 수 있는 호스트 수는?
+        </div>
+
+        <button onclick="toggleAnswer(19)">
+            정답 보기
+        </button>
+
+        <div id="answer19" class="answer">
+            256 - 2 = 254개.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            20. 네트워크 주소에서 호스트 비트는 어떻게 되는가?
+        </div>
+
+        <button onclick="toggleAnswer(20)">
+            정답 보기
+        </button>
+
+        <div id="answer20" class="answer">
+            모두 0.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            21. 브로드캐스트 주소에서 호스트 비트는?
+        </div>
+
+        <button onclick="toggleAnswer(21)">
+            정답 보기
+        </button>
+
+        <div id="answer21" class="answer">
+            모두 1.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            22. 버블 정렬의 핵심은?
+        </div>
+
+        <button onclick="toggleAnswer(22)">
+            정답 보기
+        </button>
+
+        <div id="answer22" class="answer">
+            인접한 두 값을 비교하고 필요하면 교환하는 것.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            23. 선택 정렬의 핵심은?
+        </div>
+
+        <button onclick="toggleAnswer(23)">
+            정답 보기
+        </button>
+
+        <div id="answer23" class="answer">
+            정렬되지 않은 부분에서 최솟값을 선택하여 앞으로 보내는 것.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            24. 병합 정렬의 핵심은?
+        </div>
+
+        <button onclick="toggleAnswer(24)">
+            정답 보기
+        </button>
+
+        <div id="answer24" class="answer">
+            데이터를 나누고 정렬한 뒤 다시 병합하는 것.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            25. 이진 탐색을 사용하기 위한 중요한 조건은?
+        </div>
+
+        <button onclick="toggleAnswer(25)">
+            정답 보기
+        </button>
+
+        <div id="answer25" class="answer">
+            데이터가 정렬되어 있어야 한다.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            26. 이진 탐색에서 매번 무엇을 기준으로 탐색 범위를 줄이는가?
+        </div>
+
+        <button onclick="toggleAnswer(26)">
+            정답 보기
+        </button>
+
+        <div id="answer26" class="answer">
+            가운데 값.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            27. 압축의 기본적인 목적은?
+        </div>
+
+        <button onclick="toggleAnswer(27)">
+            정답 보기
+        </button>
+
+        <div id="answer27" class="answer">
+            데이터의 크기를 줄이는 것.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            28. 원본을 완전히 복원할 수 있는 압축은?
+        </div>
+
+        <button onclick="toggleAnswer(28)">
+            정답 보기
+        </button>
+
+        <div id="answer28" class="answer">
+            무손실 압축.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            29. 암호화의 목적은?
+        </div>
+
+        <button onclick="toggleAnswer(29)">
+            정답 보기
+        </button>
+
+        <div id="answer29" class="answer">
+            데이터를 보호하고 허가되지 않은 사람이 내용을 알아보기 어렵게 하는 것.
+        </div>
+
+    </div>
+
+    <div class="quiz">
+
+        <div class="quiz-question">
+            30. 평문을 암호화하면 무엇이 되는가?
+        </div>
+
+        <button onclick="toggleAnswer(30)">
+            정답 보기
+        </button>
+
+        <div id="answer30" class="answer">
+            암호문.
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     14. FINAL
+     ======================================================= -->
+
+<section id="final">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            14
+        </div>
+
+        <h2>
+            시험 직전 최종 암기판
+        </h2>
+
+    </div>
+
+    <div class="card-blue">
+
+        <h3>
+            AI
+        </h3>
+
+        <ul>
+            <li>전통 프로그래밍 → 사람이 규칙 작성</li>
+            <li>머신러닝 → 데이터에서 규칙 학습</li>
+            <li>퍼셉트론 → 신경망의 기본 단위</li>
+            <li>퍼셉트론 여러 개 → 인공 신경망</li>
+            <li>입력층 → 은닉층 → 출력층</li>
+            <li>깊은 신경망 → 은닉층이 여러 개</li>
+            <li>딥러닝 → 깊은 신경망을 이용한 학습</li>
+            <li>CNN → 이미지 처리에 적합</li>
+        </ul>
+
+    </div>
+
+    <div class="card-blue">
+
+        <h3>
+            Python
+        </h3>
+
+        <ul>
+            <li><code>+</code> → 덧셈 / 문자열 연결</li>
+            <li><code>-</code> → 뺄셈</li>
+            <li><code>*</code> → 곱셈 / 문자열 반복</li>
+            <li><code>/</code> → 나눗셈</li>
+            <li><code>//</code> → 몫</li>
+            <li><code>%</code> → 나머지</li>
+            <li><code>**</code> → 거듭제곱</li>
+            <li><code>=</code> → 대입</li>
+            <li><code>==</code> → 같다</li>
+            <li><code>!=</code> → 같지 않다</li>
+            <li><code>and</code> → 둘 다 참</li>
+            <li><code>or</code> → 하나라도 참</li>
+            <li><code>not</code> → 반대</li>
+        </ul>
+
+    </div>
+
+    <div class="card-blue">
+
+        <h3>
+            네트워크
+        </h3>
+
+        <ul>
+            <li>IPv4 → 32비트</li>
+            <li>IP → 네트워크에서 장치 식별</li>
+            <li>DNS → 도메인과 IP 연결</li>
+            <li>DHCP → 네트워크 설정 자동 할당</li>
+            <li>게이트웨이 → 다른 네트워크로 나가는 출입구</li>
+            <li>서브넷 마스크 → 네트워크/호스트 구분</li>
+            <li>CIDR /24 → 네트워크 24비트</li>
+            <li>/24 → 호스트 8비트</li>
+            <li>/24 → 전체 주소 256개</li>
+            <li>/24 → 일반적으로 사용 가능 호스트 254개</li>
+            <li>네트워크 주소 → 호스트 비트 0</li>
+            <li>브로드캐스트 → 호스트 비트 1</li>
+        </ul>
+
+    </div>
+
+    <div class="card-blue">
+
+        <h3>
+            정렬
+        </h3>
+
+        <ul>
+            <li>버블 → 옆끼리 비교·교환</li>
+            <li>선택 → 최솟값 선택해서 앞으로</li>
+            <li>병합 → 나누고 정렬하고 합치기</li>
+        </ul>
+
+    </div>
+
+    <div class="card-blue">
+
+        <h3>
+            탐색
+        </h3>
+
+        <ul>
+            <li>순차 → 처음부터 하나씩</li>
+            <li>이진 → 가운데 확인 후 절반 제거</li>
+            <li>이진 탐색 → 정렬 필수</li>
+        </ul>
+
+    </div>
+
+    <div class="card-blue">
+
+        <h3>
+            압축·암호화
+        </h3>
+
+        <ul>
+            <li>압축 → 데이터 크기 감소</li>
+            <li>무손실 → 원본 완전 복원 가능</li>
+            <li>손실 → 일부 정보 손실 가능</li>
+            <li>암호화 → 데이터 보호</li>
+            <li>평문 → 암호화 → 암호문</li>
+            <li>암호문 → 복호화 → 평문</li>
+        </ul>
+
+    </div>
+
+    <h3>
+        ★ 진짜 마지막 20초 암기
+    </h3>
+
+    <div class="memory">
+
+        <p>
+            <strong>
+                머신러닝 = 데이터로 규칙 찾기
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                퍼셉트론 = 신경망 기본 단위
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                딥러닝 = 깊은 신경망 학습
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                CNN = 이미지
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                / = 나눗셈
+                / / = 몫
+                % = 나머지
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                = 대입 / == 비교
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                and = 둘 다
+                / or = 하나라도
+                / not = 반대
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                버블 = 옆끼리
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                선택 = 작은 것 선택
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                병합 = 나누고 합치기
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                순차 = 하나씩
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                이진 = 가운데 + 절반
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                이진 탐색 = 정렬 필요
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                IPv4 = 32비트
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                /24 = 24 네트워크 + 8 호스트
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                /24 = 256개 주소 = 일반적으로 254개 사용
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                네트워크 주소 = 호스트 0
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                브로드캐스트 = 호스트 1
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                압축 = 크기 줄이기
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                암호화 = 내용 보호
+            </strong>
+        </p>
+
+    </div>
+
+    <h3>
+        시험 전 체크리스트
+    </h3>
+
+    <ul class="checklist">
+
+        <li>
+            <label>
+                <input type="checkbox">
+                전통적 프로그래밍과 머신러닝의 차이를 설명할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                퍼셉트론과 신경망의 관계를 설명할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                입력층·은닉층·출력층을 구분할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                깊은 신경망과 딥러닝의 차이를 알고 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                CNN이 이미지 처리에 적합한 이유를 설명할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                /, //, %를 구분할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                =와 ==를 구분할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                문자열 +와 *의 의미를 알고 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                and, or, not을 구분할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                IPv4가 32비트라는 것을 알고 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                CIDR 표기를 해석할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                네트워크 비트와 호스트 비트를 구분할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                네트워크 주소와 브로드캐스트 주소를 구분할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                호스트 수를 계산할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                버블·선택·병합 정렬의 차이를 설명할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                순차 탐색과 이진 탐색을 구분할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                이진 탐색에 정렬이 필요하다는 것을 알고 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                무손실·손실 압축의 차이를 설명할 수 있다.
+            </label>
+        </li>
+
+        <li>
+            <label>
+                <input type="checkbox">
+                평문·암호문·암호화·복호화를 구분할 수 있다.
+            </label>
+        </li>
+
+    </ul>
+
+</section>
+
+</main>
+
+<button id="topButton" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    ↑
+</button>
+
+<script>
+
+/* =========================================================
+   퀴즈 답 표시
+   ========================================================= */
+
+function toggleAnswer(number) {
+
+    const answer =
+        document.getElementById("answer" + number);
+
+    if (!answer) {
+        return;
+    }
+
+    answer.classList.toggle("show");
+}
+
+/* =========================================================
+   모든 답 보기
+   ========================================================= */
+
+function showAllAnswers() {
+
+    const answers =
+        document.querySelectorAll(".answer");
+
+    answers.forEach(function(answer) {
+
+        answer.classList.add("show");
+
+    });
+
+}
+
+/* =========================================================
+   모든 답 숨기기
+   ========================================================= */
+
+function hideAllAnswers() {
+
+    const answers =
+        document.querySelectorAll(".answer");
+
+    answers.forEach(function(answer) {
+
+        answer.classList.remove("show");
+
+    });
+
+}
+
+/* =========================================================
+   키보드 단축키
+   ========================================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Home") {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+});
+
+/* =========================================================
+   스크롤에 따른 TOP 버튼
+   ========================================================= */
+
+const topButton =
+    document.getElementById("topButton");
+
+window.addEventListener("scroll", function() {
+
+    if (window.scrollY > 400) {
+
+        topButton.style.display = "block";
+
+    } else {
+
+        topButton.style.display = "none";
+
+    }
+
+});
+
+/* =========================================================
+   초기 상태
+   ========================================================= */
+
+topButton.style.display = "none";
+
+</script>
+
+</body>
+</html>
