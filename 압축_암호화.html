@@ -220,65 +220,37 @@ th {
 
 <h2>목차</h2>
 
-<a href="#digital">
-1. 디지털 데이터
-</a>
+<a href="#digital">1. 디지털 데이터</a>
 
-<a href="#sampling">
-2. 표본화
-</a>
+<a href="#sampling">2. 표본화</a>
 
-<a href="#quantization">
-3. 양자화
-</a>
+<a href="#quantization">3. 양자화</a>
 
-<a href="#encoding">
-4. 부호화
-</a>
+<a href="#encoding">4. 부호화</a>
 
-<a href="#lossy">
-5. 손실 압축
-</a>
+<a href="#lossy">5. 손실 압축</a>
 
-<a href="#lossless">
-6. 무손실 압축
-</a>
+<a href="#lossless">6. 무손실 압축</a>
 
-<a href="#dictionary">
-7. 사전 기반 압축
-</a>
+<a href="#rle">7. 연속 길이 부호화(RLE)</a>
 
-<a href="#rate">
-8. 압축률
-</a>
+<a href="#dictionary">8. 사전 기반 압축</a>
 
-<a href="#image">
-9. 이미지 파일 형식
-</a>
+<a href="#rate">9. 압축률</a>
 
-<a href="#sound">
-10. 소리 파일 형식
-</a>
+<a href="#image">10. 이미지 파일 형식</a>
 
-<a href="#encryption">
-11. 암호화
-</a>
+<a href="#sound">11. 소리 파일 형식</a>
 
-<a href="#substitution">
-12. 치환형 암호
-</a>
+<a href="#encryption">12. 암호화</a>
 
-<a href="#transposition">
-13. 전치형 암호
-</a>
+<a href="#substitution">13. 치환형 암호</a>
 
-<a href="#comparison">
-14. 최종 비교표
-</a>
+<a href="#transposition">14. 전치형 암호</a>
 
-<a href="#quiz">
-15. 시험 직전 문제
-</a>
+<a href="#comparison">15. 최종 비교표</a>
+
+<a href="#quiz">16. 시험 직전 문제</a>
 
 </nav>
 
@@ -362,6 +334,7 @@ th {
 
 시험 포인트:<br>
 표본화 → 신호를 일정한 시간 간격으로 측정
+
 </div>
 
 </section>
@@ -424,6 +397,7 @@ th {
 표본화 → 시간<br>
 양자화 → 값의 단계<br>
 부호화 → 코드
+
 </div>
 
 </section>
@@ -494,7 +468,7 @@ th {
 
 </div>
 
-<h3>예시</h3>
+<h3>대표적인 예</h3>
 
 <ul>
 
@@ -512,6 +486,7 @@ th {
 "압축 해제 후 원본과 완전히 동일한가?"<br><br>
 
 손실 압축 → 아니오
+
 </div>
 
 </section>
@@ -557,50 +532,213 @@ th {
 
 <!-- ========================================= -->
 
-<section id="dictionary">
+<section id="rle">
 
-<h2>7. 사전 기반 압축</h2>
+<h2>7. 연속 길이 부호화(RLE)</h2>
 
 <p>
-<strong>사전 기반 압축</strong>은 데이터에서 반복되는 문자열이나
-패턴을 찾아 사전에 저장하고,
-반복되는 부분을 짧은 표현으로 바꾸는 방식이다.
+<strong>연속 길이 부호화(RLE, Run-Length Encoding)</strong>는
+같은 데이터가 연속해서 반복될 때
+반복되는 데이터와 반복 횟수를 이용하여
+짧게 표현하는 방법이다.
 </p>
 
-<h3>간단한 예</h3>
+<div class="highlight">
+
+<strong>RLE 핵심:</strong><br>
+연속해서 반복되는 데이터 → 데이터 + 반복 횟수
+
+</div>
+
+<h3>예시</h3>
 
 <div class="code">
 
 원본:
 
-ABCABCABCABCABCABC
+AAABBBBBBBCCCCC
 
-사전:
+↓ RLE 압축
 
-1 = ABC
-
-압축 데이터:
-
-111111
+A3B7C5
 
 </div>
 
 <p>
-실제로는 훨씬 복잡한 방식으로 동작하지만
-핵심 아이디어는 <strong>반복되는 패턴을 짧게 표현</strong>하는 것이다.
+각각의 의미는 다음과 같다.
 </p>
+
+<table>
+
+<tr>
+<th>원본</th>
+<th>압축 표현</th>
+<th>의미</th>
+</tr>
+
+<tr>
+<td>AAA</td>
+<td>A3</td>
+<td>A가 3번 반복</td>
+</tr>
+
+<tr>
+<td>BBBBBBB</td>
+<td>B7</td>
+<td>B가 7번 반복</td>
+</tr>
+
+<tr>
+<td>CCCCC</td>
+<td>C5</td>
+<td>C가 5번 반복</td>
+</tr>
+
+</table>
 
 <div class="exam">
 
-<strong>사전 기반 압축 핵심:</strong><br>
-반복되는 데이터 → 사전에 등록 → 짧은 코드로 표현
+<strong>중요:</strong><br>
+
+AAABBBBBBBCCCCC → A3B7C5<br><br>
+
+이것은 <strong>사전 기반 압축이 아니라 RLE(연속 길이 부호화)</strong>이다.
+
 </div>
 
-<h3>관련 개념</h3>
+<h3>주의할 점</h3>
 
 <p>
-LZ 계열 알고리즘 등에서 이러한 아이디어가 사용된다.
+연속길이 붛ㅗ화는 데이터가 연속적으로 많이 반복될 때 효과적이다.
+반복되지 않는 데이터가 많으면 압축 효과가 작거나
+오히려 표현이 길어질 수도 있다.
 </p>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="dictionary">
+
+<h2>8. 사전 기반 압축</h2>
+
+<p>
+<strong>사전 기반 압축</strong>은 데이터에서 이미 등장한
+문자열이나 패턴을 다시 저장하는 대신,
+기존에 등장한 데이터를 참조하여 더 짧게 표현하는 방식이다.
+</p>
+
+<p>
+대표적으로 <strong>LZ 계열 압축</strong>에서 이러한 원리가 사용된다.
+</p>
+
+<div class="highlight">
+
+<strong>핵심:</strong><br>
+
+이미 나온 문자열을 다시 그대로 저장하지 않고
+<br>
+<strong>상대적 위치 + 길이</strong> 등의 정보로 참조한다.
+
+</div>
+
+<h3>예시</h3>
+
+<div class="code">
+
+원본:
+
+ABABABCABCAB
+
+압축 표현:
+
+AB(2,4)C(3,5)
+
+</div>
+
+<p>
+여기에서 괄호 안의 값은
+<strong>(상대적 위치, 길이)</strong>를 의미한다.
+</p>
+
+<table>
+
+<tr>
+<th>표현</th>
+<th>의미</th>
+</tr>
+
+<tr>
+<td>AB</td>
+<td>처음 등장하는 데이터를 그대로 저장</td>
+</tr>
+
+<tr>
+<td>(2,4)</td>
+<td>이미 나온 데이터의 상대적 위치와 길이를 이용해 참조</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>새롭게 등장한 데이터</td>
+</tr>
+
+<tr>
+<td>(3,5)</td>
+<td>앞에서 등장한 데이터를 다시 참조</td>
+</tr>
+
+</table>
+
+<div class="exam">
+
+<strong>시험 암기:</strong><br><br>
+
+사전 기반 압축<br>
+= 이미 나온 데이터를 다시 저장하지 않고<br>
+= 위치와 길이 등의 정보로 참조
+
+</div>
+
+<h3>RLE와 사전 기반 압축의 차이</h3>
+
+<table>
+
+<tr>
+<th>구분</th>
+<th>RLE</th>
+<th>사전 기반 압축</th>
+</tr>
+
+<tr>
+<td>핵심</td>
+<td>연속 반복 횟수를 기록</td>
+<td>이미 나온 문자열을 참조</td>
+</tr>
+
+<tr>
+<td>대표 예시</td>
+<td>AAABBBBBBBCCCCC → A3B7C5</td>
+<td>ABABABCABCAB → AB(2,4)C(3,5)</td>
+</tr>
+
+<tr>
+<td>핵심 정보</td>
+<td>데이터 + 반복 횟수</td>
+<td>상대적 위치 + 길이 등</td>
+</tr>
+
+</table>
+
+<div class="warning">
+
+<strong>헷갈리지 말 것!</strong><br><br>
+
+A3B7C5 → <strong>RLE</strong><br>
+(2,4), (3,5)처럼 이전 데이터를 참조 → <strong>사전 기반 압축</strong>
+
+</div>
 
 </section>
 
@@ -609,75 +747,81 @@ LZ 계열 알고리즘 등에서 이러한 아이디어가 사용된다.
 
 <section id="rate">
 
-<h2>8. 압축률</h2>
+<h2>9. 압축률</h2>
 
 <p>
-압축이 얼마나 잘 되었는지를 나타내는 대표적인 값이
-<strong>압축률</strong>이다.
+압축이 얼마나 잘 되었는지를 나타내는 값으로
+<strong>압축률</strong>을 사용할 수 있다.
 </p>
 
-<h3>기본적인 계산</h3>
+<h3>압축률 공식</h3>
 
 <div class="code">
 
-압축률(%)
+압축률
 =
-압축 후 크기
+원본 데이터의 크기
 ÷
-압축 전 크기
-× 100
+압축된 데이터의 크기
 
 </div>
 
-<h3>예시</h3>
+<p>
+압축률은 일반적으로 <strong>몇 배로 압축되었는지</strong>를
+나타내는 방식으로 이해하면 된다.
+</p>
+
+<h3>예시 1</h3>
 
 <p>
-압축 전 파일 크기가 100MB이고
-압축 후 40MB가 되었다고 하자.
+원본 데이터가 100KB이고
+압축된 데이터가 25KB라면:
 </p>
 
 <div class="code">
 
-40 ÷ 100 × 100
-= 40%
+100KB ÷ 25KB
+= 4
+
+→ 압축률 = 4배
 
 </div>
 
-<p>
-따라서 압축 후 크기는 원본의 40%이다.
-</p>
+<h3>예시 2</h3>
 
-<h3>압축으로 얼마나 줄었는가?</h3>
+<p>
+원본 데이터가 200MB이고
+압축된 데이터가 50MB라면:
+</p>
 
 <div class="code">
 
-감소율(%)
-=
-(원본 크기 - 압축 후 크기)
-÷ 원본 크기
-× 100
+200MB ÷ 50MB
+= 4
+
+→ 압축률 = 4배
 
 </div>
 
-<p>
-위 예시에서는</p>
+<div class="exam">
 
-<div class="code">
+<strong>시험 포인트:</strong><br><br>
 
-(100 - 40) ÷ 100 × 100
-= 60%
+원본 100KB → 압축 후 25KB<br>
+100 ÷ 25 = 4<br>
+<strong>압축률 = 4배</strong>
 
 </div>
-
-<p>
-즉 <strong>60% 감소</strong>했다.
-</p>
 
 <div class="warning">
 
-주의:<br>
-"압축률 40%"와
-"60% 줄었다"는 같은 상황을 다른 방식으로 표현한 것이다.
+<strong>주의:</strong><br>
+
+이 페이지에서 사용하는 압축률은
+<strong>원본 크기 ÷ 압축된 크기</strong>이다.
+
+"압축 후 크기가 원본의 몇 %"인지 묻는 문제와
+"몇 배 압축되었는지"를 묻는 문제는 구분해야 한다.
 
 </div>
 
@@ -688,38 +832,62 @@ LZ 계열 알고리즘 등에서 이러한 아이디어가 사용된다.
 
 <section id="image">
 
-<h2>9. 이미지 파일 형식</h2>
+<h2>10. 이미지 파일 형식</h2>
+
+<p>
+이미지 파일 형식은 색상 표현 방법,
+투명도 지원 여부, 압축 방식 등에 따라 특징이 달라진다.
+</p>
 
 <table>
 
 <tr>
 <th>형식</th>
-<th>특징</th>
+<th>정식 명칭</th>
 <th>압축</th>
+<th>주요 특징</th>
 </tr>
 
 <tr>
-<td>BMP</td>
-<td>압축을 거의 사용하지 않는 비트맵 이미지 형식</td>
-<td>일반적으로 무압축</td>
+<td><strong>BMP</strong></td>
+<td>Bitmap</td>
+<td>무압축</td>
+<td>
+압축하지 않은 이미지 파일 형식.
+픽셀 처리 방식에 따라 2가지 흑백 색상부터
+1,680만 색상(24비트), 256단계 투명도(8비트)까지 지원할 수 있다.
+</td>
 </tr>
 
 <tr>
-<td>PNG</td>
-<td>투명도 지원, 원본 정보 보존에 유리</td>
+<td><strong>PNG</strong></td>
+<td>Portable Network Graphics</td>
 <td>무손실</td>
+<td>
+무손실 압축을 사용하며 투명한 배경을 지원한다.
+1,680만 색상(24비트)과 256단계 투명도(8비트)를 지원한다.
+</td>
 </tr>
 
 <tr>
-<td>GIF</td>
-<td>간단한 애니메이션 등에 사용</td>
+<td><strong>GIF</strong></td>
+<td>Graphics Interchange Format</td>
 <td>무손실</td>
+<td>
+무손실 압축을 사용하며 움직이는 이미지에 자주 사용된다.
+일반적으로 0~255, 즉 256색(8비트)을 사용한다.
+</td>
 </tr>
 
 <tr>
-<td>JPEG</td>
-<td>사진 저장에 많이 사용</td>
+<td><strong>JPEG</strong></td>
+<td>Joint Photographic Experts Group</td>
 <td>손실</td>
+<td>
+손실 압축을 사용한다.
+고품질 사진에 자주 사용되며 일반적으로
+1,680만 색상을 지원한다.
+</td>
 </tr>
 
 </table>
@@ -727,38 +895,61 @@ LZ 계열 알고리즘 등에서 이러한 아이디어가 사용된다.
 <h3>BMP</h3>
 
 <p>
-픽셀 정보를 비교적 그대로 저장하기 때문에
-파일 크기가 커질 수 있다.
+<strong>BMP(Bitmap)</strong>는 압축하지 않은 이미지 파일 형식이다.
+</p>
+
+<p>
+픽셀 처리 방식에 따라
+2가지 흑백 색상부터 1,680만 색상(24비트)까지
+지원할 수 있으며,
+256단계 투명도(8비트)를 지원할 수 있다.
 </p>
 
 <h3>PNG</h3>
 
 <p>
-무손실 압축을 사용하며 투명도를 지원한다.
+<strong>PNG(Portable Network Graphics)</strong>는
+<strong>무손실 압축</strong>을 사용한다.
+</p>
+
+<p>
+<strong>투명한 배경을 지원</strong>하며
+1,680만 색상(24비트)과
+256단계 투명도(8비트)를 지원한다.
 </p>
 
 <h3>GIF</h3>
 
 <p>
-색상 수에 제한이 있고 간단한 애니메이션을
-표현하는 데 사용된다.
+<strong>GIF(Graphics Interchange Format)</strong>는
+<strong>무손실 압축</strong>을 사용한다.
+</p>
+
+<p>
+움직이는 이미지에 자주 사용되며,
+일반적으로 <strong>256색(8비트)</strong>을 사용한다.
 </p>
 
 <h3>JPEG</h3>
 
 <p>
-사진처럼 색상과 명암이 복잡한 이미지에 적합하다.
-손실 압축을 사용하기 때문에 파일 크기를 크게 줄일 수 있다.
+<strong>JPEG(Joint Photographic Experts Group)</strong>는
+<strong>손실 압축</strong>을 사용한다.
+</p>
+
+<p>
+고품질 사진에 자주 사용되며
+일반적으로 <strong>1,680만 색상</strong>을 지원한다.
 </p>
 
 <div class="exam">
 
-<strong>시험 암기:</strong><br><br>
+<strong>이미지 파일 형식 암기</strong><br><br>
 
-PNG → 무손실<br>
-GIF → 무손실<br>
-JPEG → 손실<br>
-BMP → 일반적으로 무압축
+BMP → 무압축<br>
+PNG → 무손실 + 투명 배경<br>
+GIF → 무손실 + 256색 + 움직이는 이미지<br>
+JPEG → 손실 + 사진 + 1,680만 색상
 
 </div>
 
@@ -769,38 +960,59 @@ BMP → 일반적으로 무압축
 
 <section id="sound">
 
-<h2>10. 소리 파일 형식</h2>
+<h2>11. 소리 파일 형식</h2>
 
 <table>
 
 <tr>
 <th>형식</th>
-<th>특징</th>
-<th>압축 방식</th>
+<th>정식 명칭</th>
+<th>압축</th>
+<th>주요 특징</th>
 </tr>
 
 <tr>
-<td>WAV</td>
-<td>원본에 가까운 고품질 오디오 저장</td>
-<td>일반적으로 비압축</td>
+<td><strong>WAV</strong></td>
+<td>Waveform Audio File Format</td>
+<td>무압축</td>
+<td>
+압축하지 않은 소리 파일 형식.
+파일 크기가 크지만 원래 디지털 소리 정보를 모두 보존하며
+소리 편집에 사용된다.
+</td>
 </tr>
 
 <tr>
-<td>FLAC</td>
-<td>음질 손실 없이 용량을 줄임</td>
+<td><strong>FLAC</strong></td>
+<td>Free Lossless Audio Codec</td>
 <td>무손실</td>
+<td>
+무손실 압축.
+WAV 파일보다 용량을 줄이면서도
+원래의 음질을 최대한 유지할 수 있다.
+</td>
 </tr>
 
 <tr>
-<td>MP3</td>
-<td>널리 사용되는 음악 파일 형식</td>
+<td><strong>MP3</strong></td>
+<td>MPEG-1 Audio Layer III</td>
 <td>손실</td>
+<td>
+사람의 귀로 듣기 어려운 일부 소리 정보를 제거하여
+파일 크기를 줄인다.
+적절한 음질을 유지하면서 용량을 줄이는 데 적합하다.
+</td>
 </tr>
 
 <tr>
-<td>AAC</td>
-<td>효율적인 손실 압축 오디오 형식</td>
+<td><strong>AAC</strong></td>
+<td>Advanced Audio Coding</td>
 <td>손실</td>
+<td>
+손실 압축을 사용하며,
+같은 압축률에서는 일반적으로 MP3보다
+더 좋은 음질을 제공한다.
+</td>
 </tr>
 
 </table>
@@ -808,39 +1020,59 @@ BMP → 일반적으로 무압축
 <h3>WAV</h3>
 
 <p>
-압축하지 않거나 압축이 적은 형태로 저장되는 경우가 많아
-파일 크기가 크다.
+<strong>WAV(Waveform Audio File Format)</strong>는
+압축하지 않은 소리 파일 형식이다.
+</p>
+
+<p>
+파일 크기가 크지만 원래 디지털 소리 정보를 모두 보존하며
+<strong>소리 편집</strong>에 사용된다.
 </p>
 
 <h3>FLAC</h3>
 
 <p>
-압축을 해도 원래의 디지털 오디오 데이터를
-정확하게 복원할 수 있다.
+<strong>FLAC(Free Lossless Audio Codec)</strong>은
+<strong>무손실 압축</strong>을 사용한다.
+</p>
+
+<p>
+WAV 파일보다 용량을 줄이면서도
+원래 음질을 최대한 유지할 수 있다.
 </p>
 
 <h3>MP3</h3>
 
 <p>
-사람이 듣기에 상대적으로 덜 중요한 정보를 제거하는
-손실 압축을 이용한다.
+<strong>MP3(MPEG-1 Audio Layer III)</strong>는
+<strong>손실 압축</strong>을 사용한다.
+</p>
+
+<p>
+사람의 귀로 듣기 어려운 일부 소리 정보를 제거하여
+파일 크기를 줄인다.
 </p>
 
 <h3>AAC</h3>
 
 <p>
-MP3와 마찬가지로 손실 압축을 사용하지만
-높은 압축 효율을 목표로 만들어진 형식이다.
+<strong>AAC(Advanced Audio Coding)</strong>는
+<strong>손실 압축</strong>을 사용한다.
+</p>
+
+<p>
+일반적으로 같은 압축률에서
+MP3보다 더 좋은 음질을 제공한다.
 </p>
 
 <div class="exam">
 
-<strong>시험 암기:</strong><br><br>
+<strong>소리 파일 형식 암기</strong><br><br>
 
-WAV → 비압축 계열<br>
+WAV → 무압축 + 크기 큼 + 소리 편집<br>
 FLAC → 무손실<br>
-MP3 → 손실<br>
-AAC → 손실
+MP3 → 손실 + 듣기 어려운 정보 제거<br>
+AAC → 손실 + 같은 압축률에서 일반적으로 MP3보다 음질 우수
 
 </div>
 
@@ -851,7 +1083,7 @@ AAC → 손실
 
 <section id="encryption">
 
-<h2>11. 암호화</h2>
+<h2>12. 암호화</h2>
 
 <p>
 <strong>암호화</strong>는 데이터를 다른 사람이 쉽게 이해하지 못하도록
@@ -913,7 +1145,7 @@ AAC → 손실
 
 <section id="substitution">
 
-<h2>12. 치환형 암호</h2>
+<h2>13. 치환형 암호</h2>
 
 <p>
 <strong>치환형 암호</strong>는 문자의 위치는 유지하면서
@@ -978,7 +1210,7 @@ DEF
 
 <section id="transposition">
 
-<h2>13. 전치형 암호</h2>
+<h2>14. 전치형 암호</h2>
 
 <p>
 <strong>전치형 암호</strong>는 문자를 다른 문자로 바꾸는 것이 아니라
@@ -1056,7 +1288,7 @@ CADBE
 
 <section id="comparison">
 
-<h2>14. 최종 비교표</h2>
+<h2>15. 최종 비교표</h2>
 
 <table>
 
@@ -1082,7 +1314,7 @@ CADBE
 
 <tr>
 <td>손실 압축</td>
-<td>일부 정보를 버리고 용량 감소</td>
+<td>일부 정보를 제거하여 용량 감소</td>
 </tr>
 
 <tr>
@@ -1091,13 +1323,58 @@ CADBE
 </tr>
 
 <tr>
+<td>RLE</td>
+<td>연속해서 반복되는 데이터 + 반복 횟수로 표현</td>
+</tr>
+
+<tr>
 <td>사전 기반 압축</td>
-<td>반복 패턴을 사전에 저장하여 짧게 표현</td>
+<td>이미 나온 문자열을 위치와 길이 등으로 참조</td>
 </tr>
 
 <tr>
 <td>압축률</td>
-<td>압축 전후 크기의 비율</td>
+<td>원본 데이터 크기 ÷ 압축된 데이터 크기</td>
+</tr>
+
+<tr>
+<td>BMP</td>
+<td>무압축 이미지</td>
+</tr>
+
+<tr>
+<td>PNG</td>
+<td>무손실 + 투명 배경</td>
+</tr>
+
+<tr>
+<td>GIF</td>
+<td>무손실 + 256색 + 움직이는 이미지</td>
+</tr>
+
+<tr>
+<td>JPEG</td>
+<td>손실 + 사진</td>
+</tr>
+
+<tr>
+<td>WAV</td>
+<td>무압축 + 원래 디지털 소리 정보 보존</td>
+</tr>
+
+<tr>
+<td>FLAC</td>
+<td>무손실 음성 압축</td>
+</tr>
+
+<tr>
+<td>MP3</td>
+<td>손실 + 듣기 어려운 정보 제거</td>
+</tr>
+
+<tr>
+<td>AAC</td>
+<td>손실 + 같은 압축률에서 일반적으로 MP3보다 음질 우수</td>
 </tr>
 
 <tr>
@@ -1119,7 +1396,7 @@ CADBE
 
 <section id="quiz">
 
-<h2>15. 시험 직전 문제</h2>
+<h2>16. 시험 직전 문제</h2>
 
 
 <div class="quiz">
@@ -1253,7 +1530,7 @@ MP3는 어떤 압축 방식을 사용하는가?
 <strong>문제 7</strong>
 
 <p>
-FLAC은?
+FLAC은 어떤 압축 방식을 사용하는가?
 </p>
 
 <details>
@@ -1274,6 +1551,213 @@ FLAC은?
 <strong>문제 8</strong>
 
 <p>
+<code>AAABBBBBBBCCCCC</code>를
+<code>A3B7C5</code>로 나타내는 방법은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+반복 길이 부호화(RLE)
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 9</strong>
+
+<p>
+이미 등장한 문자열을 상대적 위치와 길이 등의 정보로
+참조하는 압축 방식은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+사전 기반 압축
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 10</strong>
+
+<p>
+원본 데이터가 100KB이고 압축된 데이터가 25KB라면
+압축률은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+
+100 ÷ 25
+= 4
+
+<br><br>
+
+<strong>정답: 4배</strong>
+
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 11</strong>
+
+<p>
+원본 데이터가 200MB이고 압축된 데이터가 50MB라면
+압축률은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+
+200 ÷ 50
+= 4
+
+<br><br>
+
+<strong>정답: 4배</strong>
+
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 12</strong>
+
+<p>
+BMP, PNG, GIF, JPEG 중 손실 압축을 사용하는 것은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+JPEG
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 13</strong>
+
+<p>
+BMP, PNG, GIF, JPEG 중 투명한 배경을 지원하는 대표적인 형식은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+PNG
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 14</strong>
+
+<p>
+일반적으로 256색을 사용하고 움직이는 이미지에 자주 사용되는 형식은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+GIF
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 15</strong>
+
+<p>
+WAV, FLAC, MP3, AAC 중 무손실 압축을 사용하는 것은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+FLAC
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 16</strong>
+
+<p>
+같은 압축률에서 일반적으로 MP3보다 더 좋은 음질을 제공하는 형식은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+AAC
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 17</strong>
+
+<p>
 문자 자체를 다른 문자로 바꾸는 암호는?
 </p>
 
@@ -1292,7 +1776,7 @@ FLAC은?
 
 <div class="quiz">
 
-<strong>문제 9</strong>
+<strong>문제 18</strong>
 
 <p>
 문자 자체는 유지하고 위치만 바꾸는 암호는?
@@ -1309,57 +1793,6 @@ FLAC은?
 </details>
 
 </div>
-
-
-<div class="quiz">
-
-<strong>문제 10</strong>
-
-<p>
-원본 파일이 200MB이고 압축 후 50MB가 되었다.
-압축 후 크기는 원본의 몇 %인가?
-</p>
-
-<details>
-
-<summary>정답 보기</summary>
-
-<div class="answer">
-
-50 ÷ 200 × 100
-= 25%
-
-</div>
-
-</details>
-
-</div>
-
-
-<div class="quiz">
-
-<strong>문제 11</strong>
-
-<p>
-위 문제에서 데이터는 몇 % 감소했는가?
-</p>
-
-<details>
-
-<summary>정답 보기</summary>
-
-<div class="answer">
-
-(200 - 50) ÷ 200 × 100
-= 75%
-
-</div>
-
-</details>
-
-</div>
-
-</section>
 
 
 <!-- ========================================= -->
@@ -1382,7 +1815,7 @@ FLAC은?
 
 <br><br>
 
-손실 = 일부 정보 버림
+손실 = 일부 정보 제거
 
 <br>
 
@@ -1390,23 +1823,47 @@ FLAC은?
 
 <br><br>
 
-PNG = 무손실
+RLE = 연속 반복 + 반복 횟수
 
 <br>
 
-GIF = 무손실
-
-<br>
-
-JPEG = 손실
-
-<br>
-
-BMP = 일반적으로 무압축
+A3B7C5 = RLE
 
 <br><br>
 
-WAV = 비압축 계열
+사전 기반 = 이미 나온 문자열을 참조
+
+<br>
+
+(상대적 위치, 길이) = 사전 기반 압축
+
+<br><br>
+
+압축률 = 원본 크기 ÷ 압축된 크기
+
+<br>
+
+100KB ÷ 25KB = 4배
+
+<br><br>
+
+BMP = 무압축
+
+<br>
+
+PNG = 무손실 + 투명 배경
+
+<br>
+
+GIF = 무손실 + 256색 + 움직이는 이미지
+
+<br>
+
+JPEG = 손실 + 사진
+
+<br><br>
+
+WAV = 무압축
 
 <br>
 
@@ -1418,7 +1875,7 @@ MP3 = 손실
 
 <br>
 
-AAC = 손실
+AAC = 손실 + 같은 압축률에서 일반적으로 MP3보다 음질 우수
 
 <br><br>
 
