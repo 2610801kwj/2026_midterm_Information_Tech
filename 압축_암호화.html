@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>정보 시험 - 데이터 압축과 암호화</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f5f7fb;
+    color: #172033;
+    font-family:
+        "Noto Sans KR",
+        "Malgun Gothic",
+        Arial,
+        sans-serif;
+    line-height: 1.75;
+}
+
+header {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0 0 10px;
+    font-size: 34px;
+}
+
+header p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+.container {
+    width: min(1100px, 94%);
+    margin: 30px auto 70px;
+}
+
+nav {
+    background: white;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+}
+
+nav h2 {
+    margin-top: 0;
+}
+
+nav a {
+    display: block;
+    color: #2563eb;
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+}
+
+h2 {
+    color: #1d4ed8;
+    border-left: 5px solid #2563eb;
+    padding-left: 12px;
+}
+
+h3 {
+    color: #1e40af;
+}
+
+strong {
+    color: #1d4ed8;
+}
+
+.highlight {
+    background: #eff6ff;
+    border-left: 5px solid #3b82f6;
+    padding: 15px 18px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.warning {
+    background: #fff7ed;
+    border-left: 5px solid #f97316;
+    padding: 15px 18px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.exam {
+    background: #fef2f2;
+    border-left: 5px solid #ef4444;
+    padding: 15px 18px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th,
+td {
+    border: 1px solid #dbe2ea;
+    padding: 11px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+.code {
+    background: #111827;
+    color: #e5e7eb;
+    border-radius: 10px;
+    padding: 18px;
+    overflow-x: auto;
+    font-family: monospace;
+}
+
+.quiz {
+    border: 2px solid #dbeafe;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 15px 0;
+}
+
+.answer {
+    background: #f0fdf4;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.back {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.back a {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>정보 시험 집중 학습</h1>
+
+<p>
+데이터 압축 · 디지털 데이터 · 파일 형식 · 암호화
+</p>
+
+</header>
+
+<div class="container">
+
+<nav>
+
+<h2>목차</h2>
+
+<a href="#digital">
+1. 디지털 데이터
+</a>
+
+<a href="#sampling">
+2. 표본화
+</a>
+
+<a href="#quantization">
+3. 양자화
+</a>
+
+<a href="#encoding">
+4. 부호화
+</a>
+
+<a href="#lossy">
+5. 손실 압축
+</a>
+
+<a href="#lossless">
+6. 무손실 압축
+</a>
+
+<a href="#dictionary">
+7. 사전 기반 압축
+</a>
+
+<a href="#rate">
+8. 압축률
+</a>
+
+<a href="#image">
+9. 이미지 파일 형식
+</a>
+
+<a href="#sound">
+10. 소리 파일 형식
+</a>
+
+<a href="#encryption">
+11. 암호화
+</a>
+
+<a href="#substitution">
+12. 치환형 암호
+</a>
+
+<a href="#transposition">
+13. 전치형 암호
+</a>
+
+<a href="#comparison">
+14. 최종 비교표
+</a>
+
+<a href="#quiz">
+15. 시험 직전 문제
+</a>
+
+</nav>
+
+
+<!-- ========================================= -->
+
+<section id="digital">
+
+<h2>1. 디지털 데이터</h2>
+
+<p>
+컴퓨터는 현실 세계의 정보를 그대로 이해하는 것이 아니라
+정보를 <strong>디지털 데이터</strong>로 변환하여 처리한다.
+</p>
+
+<div class="highlight">
+
+<strong>핵심:</strong>
+
+현실의 연속적인 정보를 컴퓨터가 처리할 수 있는
+디지털 형태로 바꾸는 과정이 중요하다.
+
+</div>
+
+<p>
+대표적인 대상은 사진, 소리, 영상, 문자 등이다.
+</p>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="sampling">
+
+<h2>2. 표본화</h2>
+
+<p>
+<strong>표본화(Sampling)</strong>는 연속적인 아날로그 신호를
+일정한 시간 간격으로 측정하여 표본을 얻는 과정이다.
+</p>
+
+<h3>예시</h3>
+
+<p>
+마이크가 사람의 목소리를 받아들인다고 생각해 보자.
+</p>
+
+<p>
+실제 소리는 시간에 따라 연속적으로 변하지만,
+컴퓨터는 모든 순간의 값을 무한히 저장할 수 없다.
+</p>
+
+<p>
+따라서 일정한 간격마다 소리의 크기를 측정한다.
+</p>
+
+<div class="highlight">
+
+<strong>표본화 = 시간축에서 얼마나 자주 측정하는가</strong>
+
+</div>
+
+<h3>표본화 주파수</h3>
+
+<p>
+1초 동안 몇 번 표본을 얻는지를
+<strong>표본화 주파수</strong>라고 한다.
+</p>
+
+<p>
+단위는 Hz를 사용한다.
+</p>
+
+<p>
+예를 들어 44,100 Hz라면
+1초에 44,100번 측정한다는 의미이다.
+</p>
+
+<div class="exam">
+
+시험 포인트:<br>
+표본화 → 신호를 일정한 시간 간격으로 측정
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="quantization">
+
+<h2>3. 양자화</h2>
+
+<p>
+표본화한 값은 여전히 연속적인 값일 수 있다.
+</p>
+
+<p>
+컴퓨터에서 저장하려면 이를 일정한 단계의 값으로
+나누어 표현해야 한다.
+</p>
+
+<p>
+이 과정을 <strong>양자화(Quantization)</strong>라고 한다.
+</p>
+
+<div class="highlight">
+
+<strong>양자화 = 측정한 값을 정해진 단계의 값으로 바꾸는 것</strong>
+
+</div>
+
+<h3>쉽게 구분</h3>
+
+<table>
+
+<tr>
+<th>과정</th>
+<th>무엇을 하는가?</th>
+</tr>
+
+<tr>
+<td>표본화</td>
+<td>언제 측정할 것인가?</td>
+</tr>
+
+<tr>
+<td>양자화</td>
+<td>측정한 값을 어떤 단계로 표현할 것인가?</td>
+</tr>
+
+<tr>
+<td>부호화</td>
+<td>그 값을 어떤 디지털 코드로 나타낼 것인가?</td>
+</tr>
+
+</table>
+
+<div class="exam">
+
+<strong>암기:</strong><br>
+표본화 → 시간<br>
+양자화 → 값의 단계<br>
+부호화 → 코드
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="encoding">
+
+<h2>4. 부호화</h2>
+
+<p>
+양자화된 값을 컴퓨터가 처리할 수 있는
+디지털 코드로 표현하는 것을
+<strong>부호화(Encoding)</strong>라고 한다.
+</p>
+
+<p>
+컴퓨터에서는 대표적으로 0과 1을 이용한다.
+</p>
+
+<div class="highlight">
+
+표본화 → 양자화 → 부호화
+
+</div>
+
+<p>
+이 세 과정을 연결해서 기억하면 된다.
+</p>
+
+<div class="code">
+
+아날로그 신호
+↓
+표본화
+↓
+양자화
+↓
+부호화
+↓
+디지털 데이터
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="lossy">
+
+<h2>5. 손실 압축</h2>
+
+<p>
+<strong>손실 압축</strong>은 압축 과정에서
+일부 데이터를 제거하여 파일 크기를 줄이는 방법이다.
+</p>
+
+<p>
+압축을 풀어도 원본과 완전히 동일하지 않을 수 있다.
+</p>
+
+<div class="highlight">
+
+<strong>손실 압축</strong><br>
+일부 정보 제거 → 파일 크기 감소 → 원본과 완전히 같지 않을 수 있음
+
+</div>
+
+<h3>예시</h3>
+
+<ul>
+
+<li>JPEG 이미지</li>
+
+<li>MP3 음악</li>
+
+<li>AAC 음악</li>
+
+</ul>
+
+<div class="exam">
+
+시험에서 자주 묻는 것:<br>
+"압축 해제 후 원본과 완전히 동일한가?"<br><br>
+
+손실 압축 → 아니오
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="lossless">
+
+<h2>6. 무손실 압축</h2>
+
+<p>
+<strong>무손실 압축</strong>은 데이터를 압축하더라도
+압축을 해제하면 원래 데이터를 완전히 복원할 수 있는 방법이다.
+</p>
+
+<div class="highlight">
+
+<strong>무손실 압축</strong><br>
+정보를 정확하게 보존 → 압축 해제 시 원본 복원 가능
+
+</div>
+
+<h3>대표적인 예</h3>
+
+<ul>
+
+<li>PNG</li>
+
+<li>GIF</li>
+
+<li>FLAC</li>
+
+</ul>
+
+<p>
+문서나 프로그램 파일처럼 데이터가 조금이라도 달라지면
+문제가 되는 경우 무손실 압축이 중요하다.
+</p>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="dictionary">
+
+<h2>7. 사전 기반 압축</h2>
+
+<p>
+<strong>사전 기반 압축</strong>은 데이터에서 반복되는 문자열이나
+패턴을 찾아 사전에 저장하고,
+반복되는 부분을 짧은 표현으로 바꾸는 방식이다.
+</p>
+
+<h3>간단한 예</h3>
+
+<div class="code">
+
+원본:
+
+ABCABCABCABCABCABC
+
+사전:
+
+1 = ABC
+
+압축 데이터:
+
+111111
+
+</div>
+
+<p>
+실제로는 훨씬 복잡한 방식으로 동작하지만
+핵심 아이디어는 <strong>반복되는 패턴을 짧게 표현</strong>하는 것이다.
+</p>
+
+<div class="exam">
+
+<strong>사전 기반 압축 핵심:</strong><br>
+반복되는 데이터 → 사전에 등록 → 짧은 코드로 표현
+</div>
+
+<h3>관련 개념</h3>
+
+<p>
+LZ 계열 알고리즘 등에서 이러한 아이디어가 사용된다.
+</p>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="rate">
+
+<h2>8. 압축률</h2>
+
+<p>
+압축이 얼마나 잘 되었는지를 나타내는 대표적인 값이
+<strong>압축률</strong>이다.
+</p>
+
+<h3>기본적인 계산</h3>
+
+<div class="code">
+
+압축률(%)
+=
+압축 후 크기
+÷
+압축 전 크기
+× 100
+
+</div>
+
+<h3>예시</h3>
+
+<p>
+압축 전 파일 크기가 100MB이고
+압축 후 40MB가 되었다고 하자.
+</p>
+
+<div class="code">
+
+40 ÷ 100 × 100
+= 40%
+
+</div>
+
+<p>
+따라서 압축 후 크기는 원본의 40%이다.
+</p>
+
+<h3>압축으로 얼마나 줄었는가?</h3>
+
+<div class="code">
+
+감소율(%)
+=
+(원본 크기 - 압축 후 크기)
+÷ 원본 크기
+× 100
+
+</div>
+
+<p>
+위 예시에서는</p>
+
+<div class="code">
+
+(100 - 40) ÷ 100 × 100
+= 60%
+
+</div>
+
+<p>
+즉 <strong>60% 감소</strong>했다.
+</p>
+
+<div class="warning">
+
+주의:<br>
+"압축률 40%"와
+"60% 줄었다"는 같은 상황을 다른 방식으로 표현한 것이다.
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="image">
+
+<h2>9. 이미지 파일 형식</h2>
+
+<table>
+
+<tr>
+<th>형식</th>
+<th>특징</th>
+<th>압축</th>
+</tr>
+
+<tr>
+<td>BMP</td>
+<td>압축을 거의 사용하지 않는 비트맵 이미지 형식</td>
+<td>일반적으로 무압축</td>
+</tr>
+
+<tr>
+<td>PNG</td>
+<td>투명도 지원, 원본 정보 보존에 유리</td>
+<td>무손실</td>
+</tr>
+
+<tr>
+<td>GIF</td>
+<td>간단한 애니메이션 등에 사용</td>
+<td>무손실</td>
+</tr>
+
+<tr>
+<td>JPEG</td>
+<td>사진 저장에 많이 사용</td>
+<td>손실</td>
+</tr>
+
+</table>
+
+<h3>BMP</h3>
+
+<p>
+픽셀 정보를 비교적 그대로 저장하기 때문에
+파일 크기가 커질 수 있다.
+</p>
+
+<h3>PNG</h3>
+
+<p>
+무손실 압축을 사용하며 투명도를 지원한다.
+</p>
+
+<h3>GIF</h3>
+
+<p>
+색상 수에 제한이 있고 간단한 애니메이션을
+표현하는 데 사용된다.
+</p>
+
+<h3>JPEG</h3>
+
+<p>
+사진처럼 색상과 명암이 복잡한 이미지에 적합하다.
+손실 압축을 사용하기 때문에 파일 크기를 크게 줄일 수 있다.
+</p>
+
+<div class="exam">
+
+<strong>시험 암기:</strong><br><br>
+
+PNG → 무손실<br>
+GIF → 무손실<br>
+JPEG → 손실<br>
+BMP → 일반적으로 무압축
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="sound">
+
+<h2>10. 소리 파일 형식</h2>
+
+<table>
+
+<tr>
+<th>형식</th>
+<th>특징</th>
+<th>압축 방식</th>
+</tr>
+
+<tr>
+<td>WAV</td>
+<td>원본에 가까운 고품질 오디오 저장</td>
+<td>일반적으로 비압축</td>
+</tr>
+
+<tr>
+<td>FLAC</td>
+<td>음질 손실 없이 용량을 줄임</td>
+<td>무손실</td>
+</tr>
+
+<tr>
+<td>MP3</td>
+<td>널리 사용되는 음악 파일 형식</td>
+<td>손실</td>
+</tr>
+
+<tr>
+<td>AAC</td>
+<td>효율적인 손실 압축 오디오 형식</td>
+<td>손실</td>
+</tr>
+
+</table>
+
+<h3>WAV</h3>
+
+<p>
+압축하지 않거나 압축이 적은 형태로 저장되는 경우가 많아
+파일 크기가 크다.
+</p>
+
+<h3>FLAC</h3>
+
+<p>
+압축을 해도 원래의 디지털 오디오 데이터를
+정확하게 복원할 수 있다.
+</p>
+
+<h3>MP3</h3>
+
+<p>
+사람이 듣기에 상대적으로 덜 중요한 정보를 제거하는
+손실 압축을 이용한다.
+</p>
+
+<h3>AAC</h3>
+
+<p>
+MP3와 마찬가지로 손실 압축을 사용하지만
+높은 압축 효율을 목표로 만들어진 형식이다.
+</p>
+
+<div class="exam">
+
+<strong>시험 암기:</strong><br><br>
+
+WAV → 비압축 계열<br>
+FLAC → 무손실<br>
+MP3 → 손실<br>
+AAC → 손실
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="encryption">
+
+<h2>11. 암호화</h2>
+
+<p>
+<strong>암호화</strong>는 데이터를 다른 사람이 쉽게 이해하지 못하도록
+특정한 규칙에 따라 변환하는 것이다.
+</p>
+
+<p>
+원래 데이터를 <strong>평문</strong>,
+암호화된 데이터를 <strong>암호문</strong>이라고 한다.
+</p>
+
+<div class="code">
+
+평문
+↓
+암호화
+↓
+암호문
+↓
+복호화
+↓
+평문
+
+</div>
+
+<h3>암호화와 압축의 차이</h3>
+
+<table>
+
+<tr>
+<th>구분</th>
+<th>목적</th>
+</tr>
+
+<tr>
+<td>압축</td>
+<td>데이터 크기를 줄임</td>
+</tr>
+
+<tr>
+<td>암호화</td>
+<td>데이터를 보호함</td>
+</tr>
+
+</table>
+
+<div class="warning">
+
+압축했다고 해서 보안이 되는 것은 아니다.
+
+암호화했다고 해서 반드시 파일 크기가 작아지는 것도 아니다.
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="substitution">
+
+<h2>12. 치환형 암호</h2>
+
+<p>
+<strong>치환형 암호</strong>는 문자의 위치는 유지하면서
+문자 자체를 다른 문자로 바꾸는 방식이다.
+</p>
+
+<h3>예시</h3>
+
+<p>
+알파벳을 다음과 같이 바꾼다고 해보자.
+</p>
+
+<div class="code">
+
+A → D
+B → E
+C → F
+D → G
+...
+
+</div>
+
+<p>
+그렇다면</p>
+
+<div class="code">
+
+ABC
+
+↓
+
+DEF
+
+</div>
+
+<p>
+가 된다.
+</p>
+
+<div class="highlight">
+
+<strong>치환형 = 글자를 다른 글자로 바꾼다.</strong>
+
+</div>
+
+<h3>중요한 특징</h3>
+
+<ul>
+
+<li>문자의 위치는 기본적으로 유지된다.</li>
+
+<li>문자를 다른 문자로 바꾼다.</li>
+
+<li>대표적인 예로 시저 암호를 생각할 수 있다.</li>
+
+</ul>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="transposition">
+
+<h2>13. 전치형 암호</h2>
+
+<p>
+<strong>전치형 암호</strong>는 문자를 다른 문자로 바꾸는 것이 아니라
+문자의 <strong>위치를 바꾸는 방식</strong>이다.
+</p>
+
+<h3>예시</h3>
+
+<div class="code">
+
+원문:
+
+ABCDE
+
+전치:
+
+CADBE
+
+</div>
+
+<p>
+문자 자체는 그대로 A, B, C, D, E이지만
+순서가 바뀌었다.
+</p>
+
+<div class="highlight">
+
+<strong>전치형 = 글자는 그대로, 위치를 바꾼다.</strong>
+
+</div>
+
+<h3>치환형과 비교</h3>
+
+<table>
+
+<tr>
+<th>구분</th>
+<th>치환형</th>
+<th>전치형</th>
+</tr>
+
+<tr>
+<td>문자 자체</td>
+<td>바뀜</td>
+<td>그대로</td>
+</tr>
+
+<tr>
+<td>위치</td>
+<td>기본적으로 유지</td>
+<td>바뀜</td>
+</tr>
+
+<tr>
+<td>핵심</td>
+<td>문자를 다른 문자로 교체</td>
+<td>문자의 순서를 변경</td>
+</tr>
+
+</table>
+
+<div class="exam">
+
+<strong>초간단 암기:</strong><br><br>
+
+치환 = 다른 문자로 바꿈<br>
+전치 = 자리만 바꿈
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="comparison">
+
+<h2>14. 최종 비교표</h2>
+
+<table>
+
+<tr>
+<th>개념</th>
+<th>핵심</th>
+</tr>
+
+<tr>
+<td>표본화</td>
+<td>일정한 시간 간격으로 측정</td>
+</tr>
+
+<tr>
+<td>양자화</td>
+<td>값을 정해진 단계로 표현</td>
+</tr>
+
+<tr>
+<td>부호화</td>
+<td>디지털 코드로 표현</td>
+</tr>
+
+<tr>
+<td>손실 압축</td>
+<td>일부 정보를 버리고 용량 감소</td>
+</tr>
+
+<tr>
+<td>무손실 압축</td>
+<td>원본을 완전히 복원 가능</td>
+</tr>
+
+<tr>
+<td>사전 기반 압축</td>
+<td>반복 패턴을 사전에 저장하여 짧게 표현</td>
+</tr>
+
+<tr>
+<td>압축률</td>
+<td>압축 전후 크기의 비율</td>
+</tr>
+
+<tr>
+<td>치환형 암호</td>
+<td>문자를 다른 문자로 교체</td>
+</tr>
+
+<tr>
+<td>전치형 암호</td>
+<td>문자의 위치를 변경</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section id="quiz">
+
+<h2>15. 시험 직전 문제</h2>
+
+
+<div class="quiz">
+
+<strong>문제 1</strong>
+
+<p>
+아날로그 신호를 일정한 시간 간격으로 측정하는 과정은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+표본화
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 2</strong>
+
+<p>
+측정한 값을 일정한 단계로 나누어 표현하는 과정은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+양자화
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 3</strong>
+
+<p>
+압축을 해제했을 때 원본과 완전히 같아지는 압축은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+무손실 압축
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 4</strong>
+
+<p>
+JPEG는 손실 압축인가 무손실 압축인가?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+손실 압축
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 5</strong>
+
+<p>
+PNG는 손실 압축인가 무손실 압축인가?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+무손실 압축
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 6</strong>
+
+<p>
+MP3는 어떤 압축 방식을 사용하는가?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+손실 압축
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 7</strong>
+
+<p>
+FLAC은?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+무손실 압축
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 8</strong>
+
+<p>
+문자 자체를 다른 문자로 바꾸는 암호는?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+치환형 암호
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 9</strong>
+
+<p>
+문자 자체는 유지하고 위치만 바꾸는 암호는?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+전치형 암호
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 10</strong>
+
+<p>
+원본 파일이 200MB이고 압축 후 50MB가 되었다.
+압축 후 크기는 원본의 몇 %인가?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+
+50 ÷ 200 × 100
+= 25%
+
+</div>
+
+</details>
+
+</div>
+
+
+<div class="quiz">
+
+<strong>문제 11</strong>
+
+<p>
+위 문제에서 데이터는 몇 % 감소했는가?
+</p>
+
+<details>
+
+<summary>정답 보기</summary>
+
+<div class="answer">
+
+(200 - 50) ÷ 200 × 100
+= 75%
+
+</div>
+
+</details>
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+
+<section>
+
+<h2>시험 직전 30초 암기</h2>
+
+<div class="highlight">
+
+표본화 = 시간 간격으로 측정
+
+<br>
+
+양자화 = 값의 단계를 정함
+
+<br>
+
+부호화 = 디지털 코드로 표현
+
+<br><br>
+
+손실 = 일부 정보 버림
+
+<br>
+
+무손실 = 원본 복원 가능
+
+<br><br>
+
+PNG = 무손실
+
+<br>
+
+GIF = 무손실
+
+<br>
+
+JPEG = 손실
+
+<br>
+
+BMP = 일반적으로 무압축
+
+<br><br>
+
+WAV = 비압축 계열
+
+<br>
+
+FLAC = 무손실
+
+<br>
+
+MP3 = 손실
+
+<br>
+
+AAC = 손실
+
+<br><br>
+
+치환 = 문자를 바꿈
+
+<br>
+
+전치 = 자리를 바꿈
+
+</div>
+
+</section>
+
+
+<div class="back">
+
+<a href="https://turtless-team02.github.io/TURTLESS_OFFICIAL/">
+
+기존 정보 시험범위로 돌아가기
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
